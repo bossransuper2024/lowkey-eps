@@ -1,0 +1,111 @@
+{
+  "Work": [
+    { "hangul": "일", "romanization": "il", "meaning": "work" },
+    { "hangul": "회사", "romanization": "hoesa", "meaning": "company" },
+    { "hangul": "직장", "romanization": "jikjang", "meaning": "workplace" },
+    { "hangul": "사장", "romanization": "sajang", "meaning": "boss" },
+    { "hangul": "직원", "romanization": "jigwon", "meaning": "employee" },
+    { "hangul": "근무", "romanization": "geunmu", "meaning": "duty / work" },
+    { "hangul": "회의", "romanization": "hoei", "meaning": "meeting" },
+    { "hangul": "보고서", "romanization": "bogoseo", "meaning": "report" },
+    { "hangul": "일하다", "romanization": "ilhada", "meaning": "to work" },
+    { "hangul": "출근", "romanization": "chulgeun", "meaning": "going to work" },
+    { "hangul": "퇴근", "romanization": "toegeun", "meaning": "leaving work" },
+    { "hangul": "근로자", "romanization": "geunroja", "meaning": "worker / laborer" },
+    { "hangul": "월급", "romanization": "wolgeup", "meaning": "monthly salary" },
+    { "hangul": "계약", "romanization": "gyeyak", "meaning": "contract" },
+    { "hangul": "면접", "romanization": "myeonjeop", "meaning": "interview" },
+    { "hangul": "휴가", "romanization": "hyuga", "meaning": "vacation / leave" },
+    { "hangul": "사무실", "romanization": "samusil", "meaning": "office" },
+    { "hangul": "업무", "romanization": "eobmu", "meaning": "task / duties" }
+  ],
+
+  "Food": [
+    { "hangul": "밥", "romanization": "bap", "meaning": "rice / meal" },
+    { "hangul": "물", "romanization": "mul", "meaning": "water" },
+    { "hangul": "김치", "romanization": "gimchi", "meaning": "kimchi" },
+    { "hangul": "국", "romanization": "guk", "meaning": "soup" },
+    { "hangul": "고기", "romanization": "gogi", "meaning": "meat" },
+    { "hangul": "과일", "romanization": "gwail", "meaning": "fruit" },
+    { "hangul": "야채", "romanization": "yachae", "meaning": "vegetables" },
+    { "hangul": "밥 먹었어요?", "romanization": "bap meogeosseoyo?", "meaning": "Did you eat?" },
+    { "hangul": "맛있어요", "romanization": "masisseoyo", "meaning": "It's delicious" },
+    { "hangul": "배고파요", "romanization": "baegopayo", "meaning": "I'm hungry" },
+    { "hangul": "주문하다", "romanization": "jumunhada", "meaning": "to order (food)" },
+    { "hangul": "계산하다", "romanization": "gyesanhada", "meaning": "to pay / check out" },
+    { "hangul": "커피", "romanization": "keopi", "meaning": "coffee" },
+    { "hangul": "차", "romanization": "cha", "meaning": "tea" },
+    { "hangul": "빵", "romanization": "ppang", "meaning": "bread" }
+  ],
+
+  "Transportation": [
+    { "hangul": "버스", "romanization": "beoseu", "meaning": "bus" },
+    { "hangul": "지하철", "romanization": "jihacheol", "meaning": "subway" },
+    { "hangul": "택시", "romanization": "taeksi", "meaning": "taxi" },
+    { "hangul": "비행기", "romanization": "bihaenggi", "meaning": "airplane" },
+    { "hangul": "기차", "romanization": "gicha", "meaning": "train" },
+    { "hangul": "운전하다", "romanization": "unjeonhada", "meaning": "to drive" },
+    { "hangul": "타다", "romanization": "tada", "meaning": "to ride / get on" }
+  ],
+
+  "Shopping": [
+    { "hangul": "시장", "romanization": "sijang", "meaning": "market" },
+    { "hangul": "가게", "romanization": "gage", "meaning": "store" },
+    { "hangul": "물건", "romanization": "mulgeon", "meaning": "item / goods" },
+    { "hangul": "사다", "romanization": "sada", "meaning": "to buy" },
+    { "hangul": "팔다", "romanization": "palda", "meaning": "to sell" },
+    { "hangul": "가격", "romanization": "gagyeok", "meaning": "price" },
+    { "hangul": "할인", "romanization": "halin", "meaning": "discount" }
+  ],
+
+  "Time / Date": [
+    { "hangul": "오늘", "romanization": "oneul", "meaning": "today" },
+    { "hangul": "내일", "romanization": "naeil", "meaning": "tomorrow" },
+    { "hangul": "어제", "romanization": "eoje", "meaning": "yesterday" },
+    { "hangul": "시간", "romanization": "sigan", "meaning": "time / hour" },
+    { "hangul": "분", "romanization": "bun", "meaning": "minute" },
+    { "hangul": "요일", "romanization": "yoil", "meaning": "day of the week" },
+    { "hangul": "월", "romanization": "wol", "meaning": "month" },
+    { "hangul": "년", "romanization": "nyeon", "meaning": "year" }
+  ],
+
+  "Health / Emergency": [
+    { "hangul": "병원", "romanization": "byeongwon", "meaning": "hospital" },
+    { "hangul": "의사", "romanization": "uisa", "meaning": "doctor" },
+    { "hangul": "약", "romanization": "yak", "meaning": "medicine" },
+    { "hangul": "아프다", "romanization": "apeuda", "meaning": "to be sick / hurt" },
+    { "hangul": "응급실", "romanization": "eunggeupsil", "meaning": "emergency room" },
+    { "hangul": "구급차", "romanization": "gugeupcha", "meaning": "ambulance" }
+  ],
+
+  "Everyday Verbs": [
+    { "hangul": "하다", "romanization": "hada", "meaning": "to do" },
+    { "hangul": "가다", "romanization": "gada", "meaning": "to go" },
+    { "hangul": "오다", "romanization": "oda", "meaning": "to come" },
+    { "hangul": "보다", "romanization": "boda", "meaning": "to see / to watch" },
+    { "hangul": "듣다", "romanization": "deutda", "meaning": "to listen" },
+    { "hangul": "말하다", "romanization": "malhada", "meaning": "to speak" },
+    { "hangul": "알다", "romanization": "alda", "meaning": "to know" },
+    { "hangul": "모르다", "romanization": "moreuda", "meaning": "to not know" },
+    { "hangul": "걷다", "romanization": "geotda", "meaning": "to walk" },
+    { "hangul": "쉬다", "romanization": "swida", "meaning": "to rest / take a break" }
+  ],
+
+  "Common Questions": [
+    { "hangul": "어디", "romanization": "eodi", "meaning": "where" },
+    { "hangul": "무엇", "romanization": "mueot", "meaning": "what" },
+    { "hangul": "왜", "romanization": "wae", "meaning": "why" },
+    { "hangul": "언제", "romanization": "eonje", "meaning": "when" },
+    { "hangul": "얼마예요?", "romanization": "eolmayeyo?", "meaning": "How much?" },
+    { "hangul": "어떻게", "romanization": "eotteoke", "meaning": "how" }
+  ],
+
+  "Useful Phrases": [
+    { "hangul": "안녕하세요", "romanization": "annyeonghaseyo", "meaning": "Hello" },
+    { "hangul": "감사합니다", "romanization": "gamsahamnida", "meaning": "Thank you" },
+    { "hangul": "죄송합니다", "romanization": "joesonghamnida", "meaning": "Sorry / Excuse me" },
+    { "hangul": "괜찮아요", "romanization": "gwaenchanayo", "meaning": "It's okay" },
+    { "hangul": "도와주세요", "romanization": "dowajuseyo", "meaning": "Please help me" },
+    { "hangul": "천천히 말해주세요", "romanization": "cheoncheonhi malhaejuseyo", "meaning": "Please speak slowly" }
+  ]
+}
