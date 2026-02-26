@@ -14,6 +14,8 @@ button { padding:10px 20px; margin:5px; border:none; border-radius:8px; cursor:p
 .sub { font-size:24px; margin-top:20px; color:#00ffcc; }
 .hidden { display:none; }
 .error { color:#ff4d4d; margin-top:15px; }
+.back-btn { background:#333; color:#fff; }
+#tapInfo { cursor:pointer; font-size:20px; color:#0ff; margin-top:15px; }
 </style>
 </head>
 <body>
@@ -32,6 +34,7 @@ button { padding:10px 20px; margin:5px; border:none; border-radius:8px; cursor:p
 <h2>Select Category</h2>
 <div id="categories"></div>
 <div id="errorMsg" class="error"></div>
+<button class="back-btn" onclick="backToMode()">⬅️ Back to Mode</button>
 </div>
 
 <!-- FLASHCARD AREA -->
@@ -40,9 +43,10 @@ button { padding:10px 20px; margin:5px; border:none; border-radius:8px; cursor:p
 <div class="card" id="hangul"></div>
 <div class="sub hidden" id="romanization"></div>
 <div class="sub hidden" id="meaning"></div>
-<div class="sub" id="tapInfo" style="cursor:pointer;">Tap here to reveal</div>
+<div id="tapInfo" class="sub">Tap here to reveal</div>
 <br>
 <button onclick="nextWord()">Next</button>
+<button class="back-btn" onclick="backToMode()">⬅️ Back to Mode</button>
 </div>
 </div>
 
@@ -52,59 +56,40 @@ let currentCategory = "";
 let currentIndex = 0;
 let mode = 1;
 
-// Default fallback data
+// Fallback data
 vocabData = {
   "Work": [
     { "hangul": "일", "romanization": "il", "meaning": "work" },
-    { "hangul": "회사", "romanization": "hoesa", "meaning": "company" },
-    { "hangul": "직장", "romanization": "jikjang", "meaning": "workplace" },
-    { "hangul": "사장", "romanization": "sajang", "meaning": "boss" },
-    { "hangul": "직원", "romanization": "jigwon", "meaning": "employee" },
-    { "hangul": "근무", "romanization": "geunmu", "meaning": "duty / work" },
-    { "hangul": "회의", "romanization": "hoei", "meaning": "meeting" },
-    { "hangul": "보고서", "romanization": "bogoseo", "meaning": "report" },
-    { "hangul": "일하다", "romanization": "ilhada", "meaning": "to work" },
-    { "hangul": "출근", "romanization": "chulgeun", "meaning": "going to work" },
-    { "hangul": "퇴근", "romanization": "toegeun", "meaning": "leaving work" },
-    { "hangul": "근로자", "romanization": "geunroja", "meaning": "worker / laborer" },
-    { "hangul": "월급", "romanization": "wolgeup", "meaning": "monthly salary" },
-    { "hangul": "계약", "romanization": "gyeyak", "meaning": "contract" },
-    { "hangul": "면접", "romanization": "myeonjeop", "meaning": "interview" },
-    { "hangul": "휴가", "romanization": "hyuga", "meaning": "vacation / leave" },
-    { "hangul": "사무실", "romanization": "samusil", "meaning": "office" },
-    { "hangul": "업무", "romanization": "eobmu", "meaning": "task / duties" }
+    { "hangul": "회사", "romanization": "hoesa", "meaning": "company" }
   ],
-
   "Food": [
     { "hangul": "밥", "romanization": "bap", "meaning": "rice / meal" },
-    { "hangul": "물", "romanization": "mul", "meaning": "water" },
-    { "hangul": "김치", "romanization": "gimchi", "meaning": "kimchi" },
-    { "hangul": "국", "romanization": "guk", "meaning": "soup" },
-    { "hangul": "고기", "romanization": "gogi", "meaning": "meat" },
-    { "hangul": "과일", "romanization": "gwail", "meaning": "fruit" },
-    { "hangul": "야채", "romanization": "yachae", "meaning": "vegetables" },
-    { "hangul": "밥 먹었어요?", "romanization": "bap meogeosseoyo?", "meaning": "Did you eat?" },
-    { "hangul": "맛있어요", "romanization": "masisseoyo", "meaning": "It's delicious" },
-    { "hangul": "배고파요", "romanization": "baegopayo", "meaning": "I'm hungry" },
-    { "hangul": "주문하다", "romanization": "jumunhada", "meaning": "to order (food)" },
-    { "hangul": "계산하다", "romanization": "gyesanhada", "meaning": "to pay / check out" },
-    { "hangul": "커피", "romanization": "keopi", "meaning": "coffee" },
-    { "hangul": "차", "romanization": "cha", "meaning": "tea" },
-    { "hangul": "빵", "romanization": "ppang", "meaning": "bread" }
+    { "hangul": "물", "romanization": "mul", "meaning": "water" }
   ]
 };
 
-// Try loading external JSON
-fetch('vocab.json')
-.then(res => res.json())
-.then(data => { vocabData = data; })
-.catch(() => { console.log("Using fallback data."); });
+// GitHub Pages fetch with cache-busting
+fetch('./vocab.json?timestamp=' + new Date().getTime())
+  .then(res => res.json())
+  .then(data => {
+      vocabData = data;
+      console.log("Loaded vocab.json from GitHub Pages", vocabData);
+  })
+  .catch(err => {
+      console.log("Failed to load vocab.json, using fallback data", err);
+  });
 
 function setMode(selectedMode){
     mode = selectedMode;
     document.getElementById('modeMenu').classList.add('hidden');
     document.getElementById('categoryMenu').classList.remove('hidden');
     loadCategories();
+}
+
+function backToMode(){
+    document.getElementById('flashcard').classList.add('hidden');
+    document.getElementById('categoryMenu').classList.add('hidden');
+    document.getElementById('modeMenu').classList.remove('hidden');
 }
 
 function loadCategories(){
@@ -147,14 +132,12 @@ function showWord(){
     }
 }
 
-// REVEAL FUNCTION
 function reveal(){
     document.getElementById('romanization').classList.remove('hidden');
     document.getElementById('meaning').classList.remove('hidden');
     document.getElementById('tapInfo').style.display = 'none';
 }
 
-// NEXT WORD
 function nextWord(){
     currentIndex++;
     if(currentIndex >= vocabData[currentCategory].length){
@@ -163,7 +146,7 @@ function nextWord(){
     showWord();
 }
 
-// SPACEBAR REVEAL (PC)
+// SPACEBAR REVEAL
 document.addEventListener('keydown', function(e){
     if(e.code === 'Space'){
         e.preventDefault();
@@ -171,7 +154,7 @@ document.addEventListener('keydown', function(e){
     }
 });
 
-// TAP ON FLASHCARD TO REVEAL (MOBILE / TOUCH)
+// TAP ON CARD TO REVEAL
 document.getElementById('hangul').addEventListener('click', function(){
     if(mode === 1){
         reveal();
