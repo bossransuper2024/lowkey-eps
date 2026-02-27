@@ -4,49 +4,61 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Korean EPS Vocabulary Mastering</title>
-
-<link rel="stylesheet" href="style.css">
+<style>
+body { font-family: Arial, sans-serif; background:#111; color:#fff; text-align:center; }
+.container { max-width:800px; margin:auto; padding:20px; }
+button { padding:10px 20px; margin:5px; border:none; border-radius:8px; cursor:pointer; }
+.menu-btn { background:#1f1f1f; color:#fff; }
+.category-btn { background:#2d2d2d; color:#fff; }
+.card { margin-top:40px; font-size:48px; font-weight:bold; cursor:pointer; user-select:none; }
+.sub { font-size:24px; margin-top:20px; color:#00ffcc; }
+.hidden { display:none; }
+.error { color:#ff4d4d; margin-top:15px; }
+.back-btn { background:#333; color:#fff; }
+#tapInfo { cursor:pointer; font-size:10px; color:#0ff; margin-top:15px; }
+</style>
 </head>
 <body>
-
 <div class="container">
 <h1>Korean EPS Vocabulary Mastering</h1>
 
 <!-- MODE MENU -->
 <div id="modeMenu">
 <h2>Select Mode</h2>
-<button onclick="setMode(1)">1️⃣ Hangul → Reveal</button>
-<button onclick="setMode(2)">2️⃣ Hangul + Reveal Auto</button>
-<button onclick="setMode(3)">3️⃣ Hangul + Meaning Only</button>
+<button class="menu-btn" onclick="setMode(1)">1️⃣ Hangul → Reveal</button>
+<button class="menu-btn" onclick="setMode(2)">2️⃣ Hangul + Reveal Auto</button>
+<button class="menu-btn" onclick="setMode(3)">3️⃣ Hangul + Meaning (No Romanization)</button>
 </div>
 
 <!-- CATEGORY MENU -->
 <div id="categoryMenu" class="hidden">
 <h2>Select Category</h2>
 <div id="categories"></div>
-<button onclick="backToMode()">⬅ Back</button>
+<div id="errorMsg" class="error"></div>
+<button class="back-btn" onclick="backToMode()">⬅️ Back to Mode</button>
 </div>
 
-<!-- FLASHCARD -->
+<!-- FLASHCARD AREA -->
 <div id="flashcard" class="hidden">
 <h2 id="categoryTitle"></h2>
 <div class="card" id="hangul"></div>
-
-<button id="speakBtn" onclick="speakHangul()">🔊 Pronounce</button>
-
 <div class="sub hidden" id="romanization"></div>
 <div class="sub hidden" id="meaning"></div>
-
-<br><br>
+<div id="tapInfo" class="sub">Tap the word to reveal</div>
+<br>
 <button onclick="nextWord()">Next</button>
-<button onclick="backToMode()">⬅ Back</button>
+<button class="back-btn" onclick="backToMode()">⬅️ Back to Mode</button>
 </div>
-
 </div>
 
 <script>
+let vocabData = {};
+let currentCategory = "";
+let currentIndex = 0;
+let mode = 1;
 
-let vocabData = {
+// Fallback data
+vocabData = {
   "Work": [
     { "hangul": "일", "romanization": "il", "meaning": "work" },
     { "hangul": "회사", "romanization": "hoesa", "meaning": "company" }
@@ -57,11 +69,17 @@ let vocabData = {
   ]
 };
 
-let currentCategory = "";
-let currentIndex = 0;
-let mode = 1;
+// Fetch vocab.json (GitHub Pages safe)
+fetch('./vocab.json?timestamp=' + new Date().getTime())
+  .then(res => res.json())
+  .then(data => {
+      vocabData = data;
+      console.log("Loaded vocab.json", vocabData);
+  })
+  .catch(err => {
+      console.log("Using fallback data", err);
+  });
 
-/* ===== MODE ===== */
 function setMode(selectedMode){
     mode = selectedMode;
     document.getElementById('modeMenu').classList.add('hidden');
@@ -75,19 +93,26 @@ function backToMode(){
     document.getElementById('modeMenu').classList.remove('hidden');
 }
 
-/* ===== LOAD CATEGORIES ===== */
 function loadCategories(){
     let catDiv = document.getElementById('categories');
+    let errorDiv = document.getElementById('errorMsg');
     catDiv.innerHTML = "";
+    errorDiv.innerText = "";
+
+    if(Object.keys(vocabData).length === 0){
+        errorDiv.innerText = "No categories found. Check vocab.json file.";
+        return;
+    }
+
     for(let category in vocabData){
         let btn = document.createElement('button');
+        btn.className = 'category-btn';
         btn.innerText = category;
         btn.onclick = () => selectCategory(category);
         catDiv.appendChild(btn);
     }
 }
 
-/* ===== SELECT CATEGORY ===== */
 function selectCategory(category){
     currentCategory = category;
     currentIndex = 0;
@@ -97,7 +122,6 @@ function selectCategory(category){
     showWord();
 }
 
-/* ===== SHOW WORD ===== */
 function showWord(){
     let word = vocabData[currentCategory][currentIndex];
 
@@ -105,24 +129,32 @@ function showWord(){
     document.getElementById('romanization').innerText = word.romanization;
     document.getElementById('meaning').innerText = word.meaning;
 
+    // Hide all first
     document.getElementById('romanization').classList.add('hidden');
     document.getElementById('meaning').classList.add('hidden');
+    document.getElementById('tapInfo').style.display = 'none';
 
-    if(mode === 2){
+    // Mode behaviors
+    if(mode === 1){
+        document.getElementById('tapInfo').style.display = 'block';
+    }
+    else if(mode === 2){
         reveal();
     }
-    if(mode === 3){
+    else if(mode === 3){
         document.getElementById('meaning').classList.remove('hidden');
+        document.getElementById('romanization').classList.add('hidden');
     }
 }
 
-/* ===== REVEAL ===== */
 function reveal(){
-    document.getElementById('romanization').classList.remove('hidden');
-    document.getElementById('meaning').classList.remove('hidden');
+    if(mode === 1 || mode === 2){
+        document.getElementById('romanization').classList.remove('hidden');
+        document.getElementById('meaning').classList.remove('hidden');
+        document.getElementById('tapInfo').style.display = 'none';
+    }
 }
 
-/* ===== NEXT ===== */
 function nextWord(){
     currentIndex++;
     if(currentIndex >= vocabData[currentCategory].length){
@@ -131,7 +163,7 @@ function nextWord(){
     showWord();
 }
 
-/* ===== SPACEBAR REVEAL ===== */
+// SPACEBAR REVEAL
 document.addEventListener('keydown', function(e){
     if(e.code === 'Space' && mode === 1){
         e.preventDefault();
@@ -139,31 +171,12 @@ document.addEventListener('keydown', function(e){
     }
 });
 
-/* ===== CLICK REVEAL ===== */
+// TAP ON CARD TO REVEAL
 document.getElementById('hangul').addEventListener('click', function(){
     if(mode === 1){
         reveal();
     }
 });
-
-/* ===== SPEAK FUNCTION ===== */
-function speakHangul() {
-    const text = document.getElementById('hangul').innerText;
-    if (!text) return;
-
-    const utterance = new SpeechSynthesisUtterance(text);
-    utterance.lang = "ko-KR";
-    utterance.rate = 0.9;
-
-    const voices = speechSynthesis.getVoices();
-    const koreanVoice = voices.find(v => v.lang === "ko-KR");
-    if (koreanVoice) utterance.voice = koreanVoice;
-
-    speechSynthesis.cancel();
-    speechSynthesis.speak(utterance);
-}
-
 </script>
-
 </body>
 </html>
