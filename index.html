@@ -44,11 +44,15 @@ label { cursor:pointer; }
 <!-- FLASHCARD AREA -->
 <div id="flashcard" class="hidden">
 <h2 id="categoryTitle"></h2>
-  <button class="back-btn" onclick="backToMode()">⬅️ Back to Mode</button> 
-  <!-- Random toggle -->
-  <label style="display:block; margin:10px 0;"> <input type="checkbox" id="randomToggle" /> Random Order 
-  </label> 
-  <div class="card" id="hangul"></div>
+  
+<div style="display:flex; justify-content:space-between; align-items:center; margin:10px 0;">
+  <button class="back-btn" onclick="backToMode()">⬅️ Back to Mode</button>
+  <label style="margin:0; cursor:pointer;">
+    <input type="checkbox" id="randomToggle" /> Random Order
+  </label>
+</div>
+
+
 
 <div class="card" id="hangul"></div>
 <div class="sub hidden" id="romanization"></div>
