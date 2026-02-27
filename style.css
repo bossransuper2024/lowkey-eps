@@ -77,3 +77,36 @@ h2 {
     color: #000;
     transform: scale(1.05);
 }
+.card { 
+    margin-top:50px; 
+    font-size:56px; 
+    font-weight:700; 
+    cursor:pointer; 
+    user-select:none;
+
+    /* Premium Glass Effect */
+    padding:60px 80px;
+    border-radius:25px;
+    display:inline-block;
+    min-width:320px;
+
+    background: rgba(255,255,255,0.05);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+
+    border: 1px solid rgba(255,255,255,0.2);
+
+    box-shadow:
+        0 10px 40px rgba(0,0,0,0.6),
+        0 0 30px rgba(0,255,200,0.15);
+
+    transition: all 0.3s ease;
+}
+
+/* Hover animation */
+.card:hover {
+    transform: translateY(-8px) scale(1.03);
+    box-shadow:
+        0 20px 60px rgba(0,0,0,0.8),
+        0 0 40px rgba(0,255,200,0.3);
+}
