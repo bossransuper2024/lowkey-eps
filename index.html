@@ -146,7 +146,7 @@ function showWord(){
     const word = words[currentIndex];
 
     document.getElementById('hangul').innerText = word.hangul;
-    document.getElementById('romanization').innerText = word.romanization;
+    document.getElementById('romanization').innerText = `(${word.romanization})`; // ✅ add parentheses
     document.getElementById('meaning').innerText = word.meaning;
 
     // Hide all first
