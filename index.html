@@ -163,14 +163,26 @@ function reveal(){
     }
 }
 
+let currentIndex = 0;
+const randomToggle = document.getElementById('randomToggle');
+
 function nextWord(){
-    currentIndex++;
-    if(currentIndex >= vocabData[currentCategory].length){
-        currentIndex = 0;
+    const words = vocabData[currentCategory];
+    if(randomToggle.checked){
+        // Pick a random index different from currentIndex
+        let randIndex;
+        do {
+            randIndex = Math.floor(Math.random() * words.length);
+        } while(words.length > 1 && randIndex === currentIndex);
+        currentIndex = randIndex;
+    } else {
+        currentIndex++;
+        if(currentIndex >= words.length){
+            currentIndex = 0;
+        }
     }
     showWord();
 }
-
 // SPACEBAR REVEAL
 document.addEventListener('keydown', function(e){
     if(e.code === 'Space' && mode === 1){
