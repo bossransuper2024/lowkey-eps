@@ -16,8 +16,8 @@ button { padding:10px 20px; margin:5px; border:none; border-radius:8px; cursor:p
 .error { color:#ff4d4d; margin-top:15px; }
 .back-btn { background:#333; color:#fff; }
 #tapInfo { cursor:pointer; font-size:10px; color:#0ff; margin-top:15px; }
+label { cursor:pointer; }
 </style>
-<link rel="stylesheet" href="style.css">
 </head>
 <body>
 <div class="container">
@@ -41,21 +41,20 @@ button { padding:10px 20px; margin:5px; border:none; border-radius:8px; cursor:p
 
 <!-- FLASHCARD AREA -->
 <div id="flashcard" class="hidden">
-  <button class="back-btn" onclick="backToMode()">⬅️ Back to Mode</button>
-  <!-- Add this under the categoryTitle in the flashcard area -->
+<h2 id="categoryTitle"></h2>
+
+<!-- Random toggle -->
 <label style="display:block; margin:10px 0;">
   <input type="checkbox" id="randomToggle" /> Random Order
 </label>
-  
-  
-<h2 id="categoryTitle"></h2>
+
 <div class="card" id="hangul"></div>
 <div class="sub hidden" id="romanization"></div>
 <div class="sub hidden" id="meaning"></div>
 <div id="tapInfo" class="sub">Tap the word to reveal</div>
 <br>
 <button onclick="nextWord()">Next</button>
-
+<button class="back-btn" onclick="backToMode()">⬅️ Back to Mode</button>
 </div>
 </div>
 
@@ -64,29 +63,35 @@ let vocabData = {};
 let currentCategory = "";
 let currentIndex = 0;
 let mode = 1;
+const randomToggle = document.getElementById('randomToggle');
 
 // Fallback data
 vocabData = {
   "Work": [
     { "hangul": "일", "romanization": "il", "meaning": "work" },
-    { "hangul": "회사", "romanization": "hoesa", "meaning": "company" }
+    { "hangul": "회사", "romanization": "hoesa", "meaning": "company" },
+    { "hangul": "직장", "romanization": "jikjang", "meaning": "workplace" },
+    { "hangul": "사장", "romanization": "sajang", "meaning": "boss" },
+    { "hangul": "직원", "romanization": "jigwon", "meaning": "employee" }
   ],
   "Food": [
     { "hangul": "밥", "romanization": "bap", "meaning": "rice / meal" },
-    { "hangul": "물", "romanization": "mul", "meaning": "water" }
+    { "hangul": "물", "romanization": "mul", "meaning": "water" },
+    { "hangul": "김치", "romanization": "gimchi", "meaning": "kimchi" },
+    { "hangul": "국", "romanization": "guk", "meaning": "soup" }
+  ],
+  "Animals": [
+    { "hangul": "개", "romanization": "gae", "meaning": "dog" },
+    { "hangul": "고양이", "romanization": "goyangi", "meaning": "cat" },
+    { "hangul": "새", "romanization": "sae", "meaning": "bird" }
   ]
 };
 
-// Fetch vocab.json (GitHub Pages safe)
+// Load vocab.json if available
 fetch('./vocab.json?timestamp=' + new Date().getTime())
   .then(res => res.json())
-  .then(data => {
-      vocabData = data;
-      console.log("Loaded vocab.json", vocabData);
-  })
-  .catch(err => {
-      console.log("Using fallback data", err);
-  });
+  .then(data => { vocabData = data; console.log("Loaded vocab.json", vocabData); })
+  .catch(err => { console.log("Using fallback data", err); });
 
 function setMode(selectedMode){
     mode = selectedMode;
@@ -131,7 +136,9 @@ function selectCategory(category){
 }
 
 function showWord(){
-    let word = vocabData[currentCategory][currentIndex];
+    const words = vocabData[currentCategory];
+    if(!words || words.length === 0) return;
+    const word = words[currentIndex];
 
     document.getElementById('hangul').innerText = word.hangul;
     document.getElementById('romanization').innerText = word.romanization;
@@ -163,13 +170,11 @@ function reveal(){
     }
 }
 
-let currentIndex = 0;
-const randomToggle = document.getElementById('randomToggle');
-
 function nextWord(){
     const words = vocabData[currentCategory];
+    if(!words || words.length === 0) return;
+
     if(randomToggle.checked){
-        // Pick a random index different from currentIndex
         let randIndex;
         do {
             randIndex = Math.floor(Math.random() * words.length);
@@ -177,12 +182,12 @@ function nextWord(){
         currentIndex = randIndex;
     } else {
         currentIndex++;
-        if(currentIndex >= words.length){
-            currentIndex = 0;
-        }
+        if(currentIndex >= words.length) currentIndex = 0;
     }
+
     showWord();
 }
+
 // SPACEBAR REVEAL
 document.addEventListener('keydown', function(e){
     if(e.code === 'Space' && mode === 1){
