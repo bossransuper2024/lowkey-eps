@@ -41,6 +41,13 @@ button { padding:10px 20px; margin:5px; border:none; border-radius:8px; cursor:p
 
 <!-- FLASHCARD AREA -->
 <div id="flashcard" class="hidden">
+  <button class="back-btn" onclick="backToMode()">⬅️ Back to Mode</button>
+  <!-- Add this under the categoryTitle in the flashcard area -->
+<label style="display:block; margin:10px 0;">
+  <input type="checkbox" id="randomToggle" /> Random Order
+</label>
+  
+  
 <h2 id="categoryTitle"></h2>
 <div class="card" id="hangul"></div>
 <div class="sub hidden" id="romanization"></div>
@@ -48,7 +55,7 @@ button { padding:10px 20px; margin:5px; border:none; border-radius:8px; cursor:p
 <div id="tapInfo" class="sub">Tap the word to reveal</div>
 <br>
 <button onclick="nextWord()">Next</button>
-<button class="back-btn" onclick="backToMode()">⬅️ Back to Mode</button>
+
 </div>
 </div>
 
