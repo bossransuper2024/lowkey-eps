@@ -92,82 +92,82 @@
   ],
 	"도구 - Tools": [
    { "hangul": "망치", "romanization": "mangchi", "meaning": "hammer" }
-{ "hangul": "드릴", "romanization": "deuril", "meaning": "drill" }
-{ "hangul": "톱", "romanization": "top", "meaning": "saw" }
-{ "hangul": "플라이어", "romanization": "peullaireo", "meaning": "pliers" }
-{ "hangul": "드라이버", "romanization": "deuraibeo", "meaning": "screwdriver" }
-{ "hangul": "전기톱", "romanization": "jeongitop", "meaning": "electric saw" }
-{ "hangul": "사다리", "romanization": "sadari", "meaning": "ladder" }
-{ "hangul": "도끼", "romanization": "dokki", "meaning": "axe" }
-{ "hangul": "공구함", "romanization": "gongguham", "meaning": "toolbox" }
-{ "hangul": "나사", "romanization": "nasa", "meaning": "screw" }
-{ "hangul": "열쇠", "romanization": "yeolswe", "meaning": "key / wrench" }
-{ "hangul": "손전등", "romanization": "sonjeondeung", "meaning": "flashlight" }
-{ "hangul": "못", "romanization": "mot", "meaning": "nail" }
-{ "hangul": "양동이", "romanization": "yangdong-i", "meaning": "bucket" }
-{ "hangul": "대걸레", "romanization": "daegeolle", "meaning": "mop" }
-{ "hangul": "걸레", "romanization": "geolle", "meaning": "rag" }
-{ "hangul": "청소기", "romanization": "cheongsogi", "meaning": "vacuum cleaner" }
-{ "hangul": "펜치", "romanization": "penchi", "meaning": "pliers" }
-{ "hangul": "바구니", "romanization": "baguni", "meaning": "basket" }
-{ "hangul": "결속핸들", "romanization": "gyeolsok haendeul", "meaning": "binding handle" }
-{ "hangul": "전기드릴", "romanization": "jeongi deuril", "meaning": "electric drill" }
-{ "hangul": "스패너", "romanization": "seupaeneo", "meaning": "spanner" }
-{ "hangul": "니퍼", "romanization": "nipeo", "meaning": "nipper" }
-{ "hangul": "절곡기", "romanization": "jeolgokgi", "meaning": "bender" }
-{ "hangul": "쇠지레", "romanization": "soe jire", "meaning": "crowbar" }
-{ "hangul": "파이프 렌치", "romanization": "paipeu renchi", "meaning": "pipe wrench" }
-{ "hangul": "그라인더 (연삭기)", "romanization": "geuraindeo (yeonsakki)", "meaning": "grinder" }
-{ "hangul": "대패", "romanization": "daepae", "meaning": "plane" }
-{ "hangul": "사포", "romanization": "sapo", "meaning": "sandpaper" }
-{ "hangul": "줄", "romanization": "jul", "meaning": "file" }
-{ "hangul": "정", "romanization": "jeong", "meaning": "chisel" }
-{ "hangul": "송곳", "romanization": "songgot", "meaning": "awl" }
-{ "hangul": "바이스", "romanization": "baiseu", "meaning": "vice" }
-{ "hangul": "롱노즈 플라이어", "romanization": "rongnojeu peullaireo", "meaning": "long nose pliers" }
-{ "hangul": "나사 못", "romanization": "nasa mot", "meaning": "screw nail" }
-{ "hangul": "볼트 / 너트", "romanization": "bolteu / neoteu", "meaning": "bolt / nut" }
-{ "hangul": "호스", "romanization": "hoseu", "meaning": "hose" }
-{ "hangul": "스위치", "romanization": "seuwichi", "meaning": "switch" }
-{ "hangul": "배관", "romanization": "baegwan", "meaning": "pipe / plumbing" }
-{ "hangul": "테이프", "romanization": "teipeu", "meaning": "tape" }
-{ "hangul": "글루건", "romanization": "geulugeon", "meaning": "glue gun" }
-{ "hangul": "칼", "romanization": "kal", "meaning": "knife / cutter" }
-{ "hangul": "줄자", "romanization": "julja", "meaning": "measuring tape" }
-{ "hangul": "스프레이", "romanization": "seupeurei", "meaning": "spray" }
-{ "hangul": "연장", "romanization": "yeonjang", "meaning": "extension / tool accessory" }
-{ "hangul": "철사", "romanization": "cheolsa", "meaning": "wire" }
-{ "hangul": "고무망치", "romanization": "gomumangchi", "meaning": "rubber mallet" }
-{ "hangul": "렌치세트", "romanization": "rench seteu", "meaning": "wrench set" }
-{ "hangul": "전동공구", "romanization": "jeondong gonggu", "meaning": "power tool" }
-{ "hangul": "전동드라이버", "romanization": "jeondong deuraibeo", "meaning": "electric screwdriver" }
-{ "hangul": "회전톱", "romanization": "hoejun top", "meaning": "circular saw" }
-{ "hangul": "절단기", "romanization": "jeoldangi", "meaning": "cutting machine" }
-{ "hangul": "페인트 브러시", "romanization": "peinteu beureosi", "meaning": "paint brush" }
-{ "hangul": "롤러", "romanization": "rolle", "meaning": "paint roller" }
-{ "hangul": "페인트 통", "romanization": "peinteu tong", "meaning": "paint bucket" }
-{ "hangul": "사다리차", "romanization": "sadari cha", "meaning": "ladder truck" }
-{ "hangul": "안전모", "romanization": "anjeonmo", "meaning": "safety helmet" }
-{ "hangul": "안전화", "romanization": "anjeonhwa", "meaning": "safety shoes" }
-{ "hangul": "보호장갑", "romanization": "boho janggap", "meaning": "protective gloves" }
-{ "hangul": "보호안경", "romanization": "boho angyeong", "meaning": "safety goggles" }
-{ "hangul": "지렛대", "romanization": "jiretdae", "meaning": "lever" }
-{ "hangul": "사다리 받침대", "romanization": "sadari batchimdae", "meaning": "ladder support" }
-{ "hangul": "철근 커터", "romanization": "cheolgeun keoteo", "meaning": "rebar cutter" }
-{ "hangul": "모루", "romanization": "moru", "meaning": "anvil" }
-{ "hangul": "공기압 공구", "romanization": "gonggiap gonggu", "meaning": "pneumatic tool" }
-{ "hangul": "용접기", "romanization": "yongjeopgi", "meaning": "welder" }
-{ "hangul": "용접마스크", "romanization": "yongjeop maseukeu", "meaning": "welding mask" }
-{ "hangul": "용접봉", "romanization": "yongjeopbong", "meaning": "welding rod" }
-{ "hangul": "압착기", "romanization": "apchakgi", "meaning": "crimping tool" }
-{ "hangul": "클램프", "romanization": "keullaempeu", "meaning": "clamp" }
-{ "hangul": "연마기", "romanization": "yeonmagi", "meaning": "polishing machine" }
-{ "hangul": "보조발판", "romanization": "bojo balpan", "meaning": "step stool" }
-{ "hangul": "수평계", "romanization": "supyeonggye", "meaning": "level" }
-{ "hangul": "줄톱", "romanization": "jultop", "meaning": "hacksaw" }
-{ "hangul": "금속톱", "romanization": "geumsok top", "meaning": "metal saw" }
-{ "hangul": "목공용 톱", "romanization": "mokgongyong top", "meaning": "woodworking saw" }
-{ "hangul": "연장 케이스", "romanization": "yeonjang keiseu", "meaning": "tool case" }
+	{ "hangul": "드릴", "romanization": "deuril", "meaning": "drill" }
+	{ "hangul": "톱", "romanization": "top", "meaning": "saw" }
+	{ "hangul": "플라이어", "romanization": "peullaireo", "meaning": "pliers" }
+	{ "hangul": "드라이버", "romanization": "deuraibeo", "meaning": "screwdriver" }
+	{ "hangul": "전기톱", "romanization": "jeongitop", "meaning": "electric saw" }
+	{ "hangul": "사다리", "romanization": "sadari", "meaning": "ladder" }
+	{ "hangul": "도끼", "romanization": "dokki", "meaning": "axe" }
+	{ "hangul": "공구함", "romanization": "gongguham", "meaning": "toolbox" }
+	{ "hangul": "나사", "romanization": "nasa", "meaning": "screw" }
+	{ "hangul": "열쇠", "romanization": "yeolswe", "meaning": "key / wrench" }
+	{ "hangul": "손전등", "romanization": "sonjeondeung", "meaning": "flashlight" }
+	{ "hangul": "못", "romanization": "mot", "meaning": "nail" }
+	{ "hangul": "양동이", "romanization": "yangdong-i", "meaning": "bucket" }
+	{ "hangul": "대걸레", "romanization": "daegeolle", "meaning": "mop" }
+	{ "hangul": "걸레", "romanization": "geolle", "meaning": "rag" }
+	{ "hangul": "청소기", "romanization": "cheongsogi", "meaning": "vacuum cleaner" }
+	{ "hangul": "펜치", "romanization": "penchi", "meaning": "pliers" }
+	{ "hangul": "바구니", "romanization": "baguni", "meaning": "basket" }
+	{ "hangul": "결속핸들", "romanization": "gyeolsok haendeul", "meaning": "binding handle" }
+	{ "hangul": "전기드릴", "romanization": "jeongi deuril", "meaning": "electric drill" }
+	{ "hangul": "스패너", "romanization": "seupaeneo", "meaning": "spanner" }
+	{ "hangul": "니퍼", "romanization": "nipeo", "meaning": "nipper" }
+	{ "hangul": "절곡기", "romanization": "jeolgokgi", "meaning": "bender" }
+	{ "hangul": "쇠지레", "romanization": "soe jire", "meaning": "crowbar" }
+	{ "hangul": "파이프 렌치", "romanization": "paipeu renchi", "meaning": "pipe wrench" }
+	{ "hangul": "그라인더 (연삭기)", "romanization": "geuraindeo (yeonsakki)", "meaning": "grinder" }
+	{ "hangul": "대패", "romanization": "daepae", "meaning": "plane" }
+	{ "hangul": "사포", "romanization": "sapo", "meaning": "sandpaper" }
+	{ "hangul": "줄", "romanization": "jul", "meaning": "file" }
+	{ "hangul": "정", "romanization": "jeong", "meaning": "chisel" }
+	{ "hangul": "송곳", "romanization": "songgot", "meaning": "awl" }
+	{ "hangul": "바이스", "romanization": "baiseu", "meaning": "vice" }
+	{ "hangul": "롱노즈 플라이어", "romanization": "rongnojeu peullaireo", "meaning": "long nose pliers" }
+	{ "hangul": "나사 못", "romanization": "nasa mot", "meaning": "screw nail" }
+	{ "hangul": "볼트 / 너트", "romanization": "bolteu / neoteu", "meaning": "bolt / nut" }
+	{ "hangul": "호스", "romanization": "hoseu", "meaning": "hose" }
+	{ "hangul": "스위치", "romanization": "seuwichi", "meaning": "switch" }
+	{ "hangul": "배관", "romanization": "baegwan", "meaning": "pipe / plumbing" }
+	{ "hangul": "테이프", "romanization": "teipeu", "meaning": "tape" }
+	{ "hangul": "글루건", "romanization": "geulugeon", "meaning": "glue gun" }
+	{ "hangul": "칼", "romanization": "kal", "meaning": "knife / cutter" }
+	{ "hangul": "줄자", "romanization": "julja", "meaning": "measuring tape" }
+	{ "hangul": "스프레이", "romanization": "seupeurei", "meaning": "spray" }
+	{ "hangul": "연장", "romanization": "yeonjang", "meaning": "extension / tool accessory" }
+	{ "hangul": "철사", "romanization": "cheolsa", "meaning": "wire" }
+	{ "hangul": "고무망치", "romanization": "gomumangchi", "meaning": "rubber mallet" }
+	{ "hangul": "렌치세트", "romanization": "rench seteu", "meaning": "wrench set" }
+	{ "hangul": "전동공구", "romanization": "jeondong gonggu", "meaning": "power tool" }
+	{ "hangul": "전동드라이버", "romanization": "jeondong deuraibeo", "meaning": "electric screwdriver" }
+	{ "hangul": "회전톱", "romanization": "hoejun top", "meaning": "circular saw" }
+	{ "hangul": "절단기", "romanization": "jeoldangi", "meaning": "cutting machine" }
+	{ "hangul": "페인트 브러시", "romanization": "peinteu beureosi", "meaning": "paint brush" }
+	{ "hangul": "롤러", "romanization": "rolle", "meaning": "paint roller" }
+	{ "hangul": "페인트 통", "romanization": "peinteu tong", "meaning": "paint bucket" }
+	{ "hangul": "사다리차", "romanization": "sadari cha", "meaning": "ladder truck" }
+	{ "hangul": "안전모", "romanization": "anjeonmo", "meaning": "safety helmet" }
+	{ "hangul": "안전화", "romanization": "anjeonhwa", "meaning": "safety shoes" }
+	{ "hangul": "보호장갑", "romanization": "boho janggap", "meaning": "protective gloves" }
+	{ "hangul": "보호안경", "romanization": "boho angyeong", "meaning": "safety goggles" }
+	{ "hangul": "지렛대", "romanization": "jiretdae", "meaning": "lever" }
+	{ "hangul": "사다리 받침대", "romanization": "sadari batchimdae", "meaning": "ladder support" }
+	{ "hangul": "철근 커터", "romanization": "cheolgeun keoteo", "meaning": "rebar cutter" }
+	{ "hangul": "모루", "romanization": "moru", "meaning": "anvil" }
+	{ "hangul": "공기압 공구", "romanization": "gonggiap gonggu", "meaning": "pneumatic tool" }
+	{ "hangul": "용접기", "romanization": "yongjeopgi", "meaning": "welder" }
+	{ "hangul": "용접마스크", "romanization": "yongjeop maseukeu", "meaning": "welding mask" }
+	{ "hangul": "용접봉", "romanization": "yongjeopbong", "meaning": "welding rod" }
+	{ "hangul": "압착기", "romanization": "apchakgi", "meaning": "crimping tool" }
+	{ "hangul": "클램프", "romanization": "keullaempeu", "meaning": "clamp" }
+	{ "hangul": "연마기", "romanization": "yeonmagi", "meaning": "polishing machine" }
+	{ "hangul": "보조발판", "romanization": "bojo balpan", "meaning": "step stool" }
+	{ "hangul": "수평계", "romanization": "supyeonggye", "meaning": "level" }
+	{ "hangul": "줄톱", "romanization": "jultop", "meaning": "hacksaw" }
+	{ "hangul": "금속톱", "romanization": "geumsok top", "meaning": "metal saw" }
+	{ "hangul": "목공용 톱", "romanization": "mokgongyong top", "meaning": "woodworking saw" }
+	{ "hangul": "연장 케이스", "romanization": "yeonjang keiseu", "meaning": "tool case" }
 ],
   "Common Questions": [
     { "hangul": "어디", "romanization": "eodi", "meaning": "where" },
