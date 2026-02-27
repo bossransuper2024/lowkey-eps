@@ -67,6 +67,19 @@
     { "hangul": "요일", "romanization": "yoil", "meaning": "day of the week" },
     { "hangul": "월", "romanization": "wol", "meaning": "month" },
     { "hangul": "년", "romanization": "nyeon", "meaning": "year" }
+	{ "hangul": "1월", "romanization": "il-wol", "meaning": "January" },
+    { "hangul": "2월", "romanization": "i-wol", "meaning": "February" },
+    { "hangul": "3월", "romanization": "sam-wol", "meaning": "March" },
+    { "hangul": "4월", "romanization": "sa-wol", "meaning": "April" },
+    { "hangul": "5월", "romanization": "o-wol", "meaning": "May" },
+    { "hangul": "6월", "romanization": "yuk-wol", "meaning": "June" },
+    { "hangul": "7월", "romanization": "chi-rwol", "meaning": "July" },
+    { "hangul": "8월", "romanization": "pal-wol", "meaning": "August" },
+    { "hangul": "9월", "romanization": "gu-wol", "meaning": "September" },
+    { "hangul": "10월", "romanization": "si-wol", "meaning": "October" },
+    { "hangul": "11월", "romanization": "sip-i-lwol", "meaning": "November" },
+    { "hangul": "12월", "romanization": "sib-i-wol", "meaning": "December" }
+]
   ],
 
   "Health / Emergency": [
