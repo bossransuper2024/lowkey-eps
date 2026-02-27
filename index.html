@@ -20,13 +20,14 @@ button { padding:10px 20px; margin:5px; border:none; border-radius:8px; cursor:p
 </head>
 <body>
 <div class="container">
-<h1>Korean EPS Vocabulary Mastering  / lenz supot</h1>
+<h1>Korean EPS Vocabulary Mastering</h1>
 
 <!-- MODE MENU -->
 <div id="modeMenu">
 <h2>Select Mode</h2>
 <button class="menu-btn" onclick="setMode(1)">1️⃣ Hangul → Reveal</button>
 <button class="menu-btn" onclick="setMode(2)">2️⃣ Hangul + Reveal Auto</button>
+<button class="menu-btn" onclick="setMode(3)">3️⃣ Hangul + Meaning (No Romanization)</button>
 </div>
 
 <!-- CATEGORY MENU -->
@@ -68,15 +69,15 @@ vocabData = {
   ]
 };
 
-// GitHub Pages fetch with cache-busting
+// Fetch vocab.json (GitHub Pages safe)
 fetch('./vocab.json?timestamp=' + new Date().getTime())
   .then(res => res.json())
   .then(data => {
       vocabData = data;
-      console.log("Loaded vocab.json from GitHub Pages", vocabData);
+      console.log("Loaded vocab.json", vocabData);
   })
   .catch(err => {
-      console.log("Failed to load vocab.json, using fallback data", err);
+      console.log("Using fallback data", err);
   });
 
 function setMode(selectedMode){
@@ -96,10 +97,13 @@ function loadCategories(){
     let catDiv = document.getElementById('categories');
     let errorDiv = document.getElementById('errorMsg');
     catDiv.innerHTML = "";
+    errorDiv.innerText = "";
+
     if(Object.keys(vocabData).length === 0){
         errorDiv.innerText = "No categories found. Check vocab.json file.";
         return;
     }
+
     for(let category in vocabData){
         let btn = document.createElement('button');
         btn.className = 'category-btn';
@@ -120,22 +124,35 @@ function selectCategory(category){
 
 function showWord(){
     let word = vocabData[currentCategory][currentIndex];
+
     document.getElementById('hangul').innerText = word.hangul;
     document.getElementById('romanization').innerText = word.romanization;
     document.getElementById('meaning').innerText = word.meaning;
+
+    // Hide all first
     document.getElementById('romanization').classList.add('hidden');
     document.getElementById('meaning').classList.add('hidden');
-    document.getElementById('tapInfo').style.display = mode === 1 ? 'block' : 'none';
+    document.getElementById('tapInfo').style.display = 'none';
 
-    if(mode === 2){
+    // Mode behaviors
+    if(mode === 1){
+        document.getElementById('tapInfo').style.display = 'block';
+    }
+    else if(mode === 2){
         reveal();
+    }
+    else if(mode === 3){
+        document.getElementById('meaning').classList.remove('hidden');
+        document.getElementById('romanization').classList.add('hidden');
     }
 }
 
 function reveal(){
-    document.getElementById('romanization').classList.remove('hidden');
-    document.getElementById('meaning').classList.remove('hidden');
-    document.getElementById('tapInfo').style.display = 'none';
+    if(mode === 1 || mode === 2){
+        document.getElementById('romanization').classList.remove('hidden');
+        document.getElementById('meaning').classList.remove('hidden');
+        document.getElementById('tapInfo').style.display = 'none';
+    }
 }
 
 function nextWord(){
@@ -148,7 +165,7 @@ function nextWord(){
 
 // SPACEBAR REVEAL
 document.addEventListener('keydown', function(e){
-    if(e.code === 'Space'){
+    if(e.code === 'Space' && mode === 1){
         e.preventDefault();
         reveal();
     }
