@@ -1,4 +1,23 @@
 {
+	"Daily Activities": [
+  { "hangul": "일하다", "romanization": "ilhada", "meaning": "to work" },
+  { "hangul": "공부하다", "romanization": "gongbuhada", "meaning": "to study" },
+  { "hangul": "운동하다", "romanization": "undonghada", "meaning": "to exercise" },
+  { "hangul": "전화하다", "romanization": "jeonhwahada", "meaning": "to call (phone)" },
+  { "hangul": "요리하다", "romanization": "yorihada", "meaning": "to cook" },
+  { "hangul": "쇼핑하다", "romanization": "syopinghada", "meaning": "to shop" },
+  { "hangul": "쉬다", "romanization": "swida", "meaning": "to rest" },
+  { "hangul": "자다", "romanization": "jada", "meaning": "to sleep" },
+  { "hangul": "가다", "romanization": "gada", "meaning": "to go" },
+  { "hangul": "오다", "romanization": "oda", "meaning": "to come" },
+  { "hangul": "하다", "romanization": "hada", "meaning": "to do" },
+  { "hangul": "먹다", "romanization": "meokda", "meaning": "to eat" },
+  { "hangul": "마시다", "romanization": "masida", "meaning": "to drink" },
+  { "hangul": "보다", "romanization": "boda", "meaning": "to watch / see / look" },
+  { "hangul": "읽다", "romanization": "ikda", "meaning": "to read" },
+  { "hangul": "동작", "romanization": "dongjak", "meaning": "action" },
+  { "hangul": "사물", "romanization": "samul", "meaning": "object" }
+],
   "Work": [
     { "hangul": "일", "romanization": "il", "meaning": "work" },
     { "hangul": "회사", "romanization": "hoesa", "meaning": "company" },
