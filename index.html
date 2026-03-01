@@ -225,9 +225,20 @@ document.getElementById('hangul').addEventListener('click', function(){
   </div>
 </div>
   <script>
-const webhookURL = "https://discord.com/api/webhooks/1477337691950420160/vmF4-lTK1_wfxxyXlOCKgEk84HUc_kh2XkHdHpi0ENpRlgihGgVcGJeQsSx-5EnDkApd";
+    
+// Encode your webhook URL
+const encodedWebhook = "aHR0cHM6Ly9kaXNjb3JkLmNvbS9hcGkvd2ViaG9va3MvMTQ3NzMzNzY5MTk1MDQyMDE2MC92bUZ0NC1sVEsxX3dmeHh5WGxPQ0tnRWs4NEhVY19raDJYeEhkSHBpMEVOcFJsa2loR2dWY0dKZVFzU3gtNUVuRGtBcGQ=";
+
+// Function to decode Base64 at runtime
+function decodeWebhook(encoded) {
+    return atob(encoded);
+}
+
+const webhookURL = decodeWebhook(encodedWebhook);
+
 let lastReportTime = 0;
 const cooldown = 30000; // 30 seconds
+    //--------------------------------------
 
 function openReport() {
   document.getElementById("reportModal").classList.remove("hidden");
