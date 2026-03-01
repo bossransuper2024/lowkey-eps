@@ -4,196 +4,65 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Korean EPS Vocabulary Mastering</title>
-
+  
 <style>
-body{
-  margin:0;
-  font-family:Arial, sans-serif;
-  background:#111;
-  color:white;
-  text-align:center;
-}
-
-.container{
-  max-width:900px;
-  margin:auto;
-  padding:20px;
-}
-
-button{
-  padding:12px 20px;
-  font-size:18px;
-  border:none;
-  border-radius:8px;
-  cursor:pointer;
-}
-
-.menu-btn{
-  display:block;
-  width:100%;
-  max-width:400px;
-  margin:10px auto;
-  background:#2a2a2a;
-  color:white;
-}
-
-.back-btn{
-  background:#222;
-  color:white;
-}
-
-.report-btn{
-  background:red;
-  color:white;
-}
-
-.category-btn{
-  display:block;
-  width:100%;
-  max-width:400px;
-  margin:8px auto;
-  background:#2d2d2d;
-  color:white;
-}
-
-.hidden{
-  display:none;
-}
-
-/* TOP CONTROLS */
-.top-controls{
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  gap:15px;
-  flex-wrap:wrap;
-  margin-bottom:15px;
-}
-
-/* CARD */
-.card{
-  margin-top:40px;
-  perspective:1000px;
-  cursor:pointer;
-}
-
-.card-inner{
-  position:relative;
-  width:100%;
-  min-height:200px;
-  transition:transform 0.6s;
-  transform-style:preserve-3d;
-}
-
-.card.flip .card-inner{
-  transform:rotateY(180deg);
-}
-
-.card-front,
-.card-back{
-  position:absolute;
-  width:100%;
-  backface-visibility:hidden;
-  background:#1f1f1f;
-  border-radius:20px;
-  padding:60px 20px;
-}
-
-.card-front{
-  font-size:60px;
-  font-weight:bold;
-}
-
-.card-back{
-  transform:rotateY(180deg);
-  font-size:32px;
-  font-weight:bold;
-  color:#00ffd5;
-}
-
-.sub{
-  margin-top:20px;
-  font-size:22px;
-}
-
-#nextBtn{
-  display:block;
-  width:90%;
-  max-width:500px;
-  margin:30px auto;
-  background:white;
-  color:black;
-  font-weight:bold;
-  font-size:20px;
-}
-
-@media(max-width:600px){
-  .card-front{
-    font-size:42px;
-  }
-  .card-back{
-    font-size:24px;
-  }
-}
+body { font-family: Arial, sans-serif; background:#111; color:#fff; text-align:center; }
+.container { max-width:800px; margin:auto; padding:20px; }
+button { padding:10px 20px; margin:5px; border:none; border-radius:8px; cursor:pointer; }
+.menu-btn { background:#1f1f1f; color:#fff; }
+.category-btn { background:#2d2d2d; color:#fff; }
+.card { margin-top:40px; font-size:48px; font-weight:bold; cursor:pointer; user-select:none; }
+.sub { font-size:24px; margin-top:20px; color:#00ffcc; }
+.hidden { display:none; }
+.error { color:#ff4d4d; margin-top:15px; }
+.back-btn { background:#333; color:#fff; }
+#tapInfo { cursor:pointer; font-size:10px; color:#0ff; margin-top:15px; }
+label { cursor:pointer; }
 </style>
+  <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
 <div class="container">
-
 <h1>Korean EPS Vocabulary Mastering</h1>
 
 <!-- MODE MENU -->
 <div id="modeMenu">
-  <h2>Select Mode</h2>
-  <button class="menu-btn" onclick="setMode(1)">1️⃣ Tap to Reveal</button>
-  <button class="menu-btn" onclick="setMode(2)">2️⃣ Auto Reveal</button>
-  <button class="menu-btn" onclick="setMode(3)">3️⃣ No Romanization</button>
+<h2>Select Mode</h2>
+<button class="menu-btn" onclick="setMode(1)">1️⃣ Hangul → Reveal</button>
+<button class="menu-btn" onclick="setMode(2)">2️⃣ Hangul + Reveal Auto</button>
+<button class="menu-btn" onclick="setMode(3)">3️⃣ Hangul + Meaning (No Romanization)</button>
 </div>
 
 <!-- CATEGORY MENU -->
 <div id="categoryMenu" class="hidden">
-  <h2>Select Category</h2>
-  <div id="categories"></div>
-  <button class="back-btn" onclick="backToMode()">⬅️ Back</button>
+<h2>Select Category</h2>
+<div id="categories"></div>
+<div id="errorMsg" class="error"></div>
+<button class="back-btn" onclick="backToMode()">⬅️ Back to Mode</button>
 </div>
 
-<!-- FLASHCARD -->
+<!-- FLASHCARD AREA -->
 <div id="flashcard" class="hidden">
-
-  <h2 id="categoryTitle"></h2>
-
-  <div class="top-controls">
-    <button class="back-btn" onclick="backToMode()">⬅️ Back</button>
-
-    <label>
-      <input type="checkbox" id="randomToggle">
-      Random Order
-    </label>
-
-    <button class="report-btn" onclick="reportWord()">⚠ Report</button>
-  </div>
-
-  <div class="card" id="card" onclick="revealMeaning()">
-    <div class="card-inner">
-
-      <div class="card-front">
-        <div id="hangul"></div>
-      </div>
-
-      <div class="card-back">
-        <div id="meaningInside"></div>
-      </div>
-
-    </div>
-  </div>
-
-  <div id="romanization" class="sub hidden"></div>
-
-  <button id="nextBtn" class="hidden" onclick="nextWord()">Next</button>
-
+<h2 id="categoryTitle"></h2>
+  
+<div style="display:flex; justify-content:center; align-items:center; gap:10px; margin:10px 0;">
+  <button class="back-btn" onclick="backToMode()">⬅️ Back to Mode</button>
+  <label style="margin:0; cursor:pointer;">
+    <input type="checkbox" id="randomToggle" /> Random Order
+  </label>
+  <button class="report-btn" onclick="openReport()">⚠ Report</button>
 </div>
 
+
+<div class="card" id="hangul"></div>
+<div class="sub hidden" id="romanization"></div>
+<div class="sub hidden" id="meaning" style="font-size:32px; font-weight:bold;"></div>
+<div id="tapInfo" class="sub">Tap the word to reveal</div>
+<br>
+<button onclick="nextWord()">Next</button>
+
+
+</div>
 </div>
 
 <script>
@@ -201,142 +70,236 @@ let vocabData = {};
 let currentCategory = "";
 let currentIndex = 0;
 let mode = 1;
-let revealed = false;
+const randomToggle = document.getElementById('randomToggle');
 
-/* LOAD JSON */
-fetch('./vocab.json?'+Date.now())
-.then(res=>res.json())
-.then(data=>{ vocabData=data; })
-.catch(err=>console.log("JSON load failed",err));
+// Fallback data
+vocabData = {
+  "Work": [
+    { "hangul": "일", "romanization": "il", "meaning": "work" },
+    { "hangul": "회사", "romanization": "hoesa", "meaning": "company" },
+    { "hangul": "직장", "romanization": "jikjang", "meaning": "workplace" },
+    { "hangul": "사장", "romanization": "sajang", "meaning": "boss" },
+    { "hangul": "직원", "romanization": "jigwon", "meaning": "employee" }
+  ],
+  "Food": [
+    { "hangul": "밥", "romanization": "bap", "meaning": "rice / meal" },
+    { "hangul": "물", "romanization": "mul", "meaning": "water" },
+    { "hangul": "김치", "romanization": "gimchi", "meaning": "kimchi" },
+    { "hangul": "국", "romanization": "guk", "meaning": "soup" }
+  ],
+  "Animals": [
+    { "hangul": "개", "romanization": "gae", "meaning": "dog" },
+    { "hangul": "고양이", "romanization": "goyangi", "meaning": "cat" },
+    { "hangul": "새", "romanization": "sae", "meaning": "bird" }
+  ]
+};
 
-/* MODE */
-function setMode(selected){
-  mode=selected;
-  document.getElementById("modeMenu").classList.add("hidden");
-  document.getElementById("categoryMenu").classList.remove("hidden");
-  loadCategories();
+// Load vocab.json if available
+fetch('./vocab.json?timestamp=' + new Date().getTime())
+  .then(res => res.json())
+  .then(data => { vocabData = data; console.log("Loaded vocab.json", vocabData); })
+  .catch(err => { console.log("Using fallback data", err); });
+
+function setMode(selectedMode){
+    mode = selectedMode;
+    document.getElementById('modeMenu').classList.add('hidden');
+    document.getElementById('categoryMenu').classList.remove('hidden');
+    loadCategories();
 }
 
 function backToMode(){
-  document.getElementById("flashcard").classList.add("hidden");
-  document.getElementById("categoryMenu").classList.add("hidden");
-  document.getElementById("modeMenu").classList.remove("hidden");
+    document.getElementById('flashcard').classList.add('hidden');
+    document.getElementById('categoryMenu').classList.add('hidden');
+    document.getElementById('modeMenu').classList.remove('hidden');
 }
 
-/* LOAD CATEGORIES */
 function loadCategories(){
-  let div=document.getElementById("categories");
-  div.innerHTML="";
-  for(let cat in vocabData){
-    let btn=document.createElement("button");
-    btn.className="category-btn";
-    btn.innerText=cat;
-    btn.onclick=()=>selectCategory(cat);
-    div.appendChild(btn);
-  }
+    let catDiv = document.getElementById('categories');
+    let errorDiv = document.getElementById('errorMsg');
+    catDiv.innerHTML = "";
+    errorDiv.innerText = "";
+
+    if(Object.keys(vocabData).length === 0){
+        errorDiv.innerText = "No categories found. Check vocab.json file.";
+        return;
+    }
+
+    for(let category in vocabData){
+        let btn = document.createElement('button');
+        btn.className = 'category-btn';
+        btn.innerText = category;
+        btn.onclick = () => selectCategory(category);
+        catDiv.appendChild(btn);
+    }
 }
 
-function selectCategory(cat){
-  currentCategory=cat;
-  currentIndex=0;
-  document.getElementById("categoryMenu").classList.add("hidden");
-  document.getElementById("flashcard").classList.remove("hidden");
-  document.getElementById("categoryTitle").innerText=cat;
-  loadWord();
+function selectCategory(category){
+    currentCategory = category;
+    currentIndex = 0;
+    document.getElementById('categoryMenu').classList.add('hidden');
+    document.getElementById('flashcard').classList.remove('hidden');
+    document.getElementById('categoryTitle').innerText = category;
+    showWord();
 }
 
-/* LOAD WORD */
-function loadWord(){
-  const words=vocabData[currentCategory];
-  if(!words || words.length===0) return;
+function showWord(){
+    const words = vocabData[currentCategory];
+    if(!words || words.length === 0) return;
+    const word = words[currentIndex];
 
-  const word=words[currentIndex];
+    document.getElementById('hangul').innerText = word.hangul;
+    document.getElementById('romanization').innerText = `(${word.romanization})`; // ✅ add parentheses
+    document.getElementById('meaning').innerText = word.meaning;
 
-  document.getElementById("hangul").innerText=word.hangul;
-  document.getElementById("meaningInside").innerText=word.meaning;
+    // Hide all first
+    document.getElementById('romanization').classList.add('hidden');
+    document.getElementById('meaning').classList.add('hidden');
+    document.getElementById('tapInfo').style.display = 'none';
 
-  if(mode===3){
-    document.getElementById("romanization").classList.add("hidden");
-  }else{
-    document.getElementById("romanization").innerText="("+word.romanization+")";
-    document.getElementById("romanization").classList.add("hidden");
-  }
-
-  document.getElementById("nextBtn").classList.add("hidden");
-  document.getElementById("card").classList.remove("flip");
-
-  revealed=false;
-
-  if(mode===2){
-    setTimeout(revealMeaning,400);
-  }
+    // Mode behaviors
+    if(mode === 1){
+        document.getElementById('tapInfo').style.display = 'block';
+    }
+    else if(mode === 2){
+        reveal();
+    }
+    else if(mode === 3){
+        document.getElementById('meaning').classList.remove('hidden');
+        document.getElementById('romanization').classList.add('hidden');
+    }
 }
 
-/* REVEAL */
-function revealMeaning(){
-  if(revealed) return;
-
-  document.getElementById("card").classList.add("flip");
-
-  if(mode!==3){
-    document.getElementById("romanization").classList.remove("hidden");
-  }
-
-  document.getElementById("nextBtn").classList.remove("hidden");
-
-  speakWord();
-  revealed=true;
+function reveal(){
+    if(mode === 1 || mode === 2){
+        document.getElementById('romanization').classList.remove('hidden');
+        document.getElementById('meaning').classList.remove('hidden');
+        document.getElementById('tapInfo').style.display = 'none';
+    }
 }
 
-/* NEXT */
 function nextWord(){
-  const words=vocabData[currentCategory];
-  const randomMode=document.getElementById("randomToggle").checked;
+    const words = vocabData[currentCategory];
+    if(!words || words.length === 0) return;
 
-  if(randomMode){
-    let rand;
-    do{
-      rand=Math.floor(Math.random()*words.length);
-    }while(words.length>1 && rand===currentIndex);
-    currentIndex=rand;
-  }else{
-    currentIndex++;
-    if(currentIndex>=words.length) currentIndex=0;
-  }
+    if(randomToggle.checked){
+        let randIndex;
+        do {
+            randIndex = Math.floor(Math.random() * words.length);
+        } while(words.length > 1 && randIndex === currentIndex);
+        currentIndex = randIndex;
+    } else {
+        currentIndex++;
+        if(currentIndex >= words.length) currentIndex = 0;
+    }
 
-  loadWord();
+    showWord();
 }
 
-/* SOUND */
-function speakWord(){
-  const text=document.getElementById("hangul").innerText;
-  const utter=new SpeechSynthesisUtterance(text);
-  utter.lang="ko-KR";
-  utter.rate=0.9;
-  speechSynthesis.speak(utter);
-}
+// SPACEBAR REVEAL
+document.addEventListener('keydown', function(e){
+    if(e.code === 'Space' && mode === 1){
+        e.preventDefault();
+        reveal();
+    }
+});
 
-/* REPORT */
-function reportWord(){
-  const words=vocabData[currentCategory];
-  const word=words[currentIndex];
-
-  alert(
-    "Reported:\n\n" +
-    "Hangul: " + word.hangul + "\n" +
-    "Romanization: " + word.romanization + "\n" +
-    "Meaning: " + word.meaning
-  );
-}
-
-/* SPACE REVEAL */
-document.addEventListener("keydown",function(e){
-  if(e.code==="Space" && mode===1){
-    e.preventDefault();
-    revealMeaning();
-  }
+// TAP ON CARD TO REVEAL
+document.getElementById('hangul').addEventListener('click', function(){
+    if(mode === 1){
+        reveal();
+    }
 });
 </script>
+  <div id="reportModal" class="report-overlay hidden">
+  <div class="report-box">
+    <div class="report-header">
+      <h3>Report Correction</h3>
+      <span onclick="closeReport()" class="close-btn">✕</span>
+    </div>
 
+    <textarea id="reportText" placeholder="Describe the grammar issue or correction..."></textarea>
+
+    <button id="sendReportBtn" onclick="sendReport()">Send Report</button>
+
+    <div id="reportStatus" class="status-msg"></div>
+  </div>
+</div>
+  <script>
+const webhookURL = "https://discord.com/api/webhooks/1477337691950420160/vmF4-lTK1_wfxxyXlOCKgEk84HUc_kh2XkHdHpi0ENpRlgihGgVcGJeQsSx-5EnDkApd";
+let lastReportTime = 0;
+const cooldown = 30000; // 30 seconds
+
+function openReport() {
+  document.getElementById("reportModal").classList.remove("hidden");
+}
+
+function closeReport() {
+  document.getElementById("reportModal").classList.add("hidden");
+  document.getElementById("reportText").value = "";
+  document.getElementById("reportStatus").innerText = "";
+}
+
+async function sendReport() {
+  const now = Date.now();
+
+  if (now - lastReportTime < cooldown) {
+    document.getElementById("reportStatus").innerText = "⏳ Please wait before sending again.";
+    return;
+  }
+
+  const feedback = document.getElementById("reportText").value.trim();
+  if (!feedback) {
+    document.getElementById("reportStatus").innerText = "⚠ Please enter feedback.";
+    return;
+  }
+
+  const word = document.getElementById("hangul")?.innerText || "N/A";
+  const roman = document.getElementById("romanization")?.innerText || "Hidden";
+  const meaning = document.getElementById("meaning")?.innerText || "Hidden";
+
+  const category = window.currentCategory || "Default";
+  const mode = window.currentMode || "Flashcard";
+
+  const payload = {
+    embeds: [{
+      title: "📘 Flashcard Report",
+      color: 15158332,
+      fields: [
+        { name: "Word", value: word, inline: true },
+        { name: "Romanization", value: roman, inline: true },
+        { name: "Meaning", value: meaning, inline: false },
+        { name: "Category", value: category, inline: true },
+        { name: "Mode", value: mode, inline: true },
+        { name: "Correction", value: feedback, inline: false }
+      ],
+      footer: {
+        text: "Time: " + new Date().toLocaleString()
+      }
+    }]
+  };
+
+  try {
+    const btn = document.getElementById("sendReportBtn");
+    btn.disabled = true;
+
+    await fetch(webhookURL, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(payload)
+    });
+
+    lastReportTime = now;
+
+    document.getElementById("reportStatus").innerText = "✅ Report sent successfully!";
+    setTimeout(closeReport, 1500);
+
+  } catch (error) {
+    document.getElementById("reportStatus").innerText = "❌ Failed to send report.";
+  } finally {
+    document.getElementById("sendReportBtn").disabled = false;
+  }
+}
+</script>
+  
 </body>
 </html>
