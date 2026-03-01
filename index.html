@@ -4,65 +4,47 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Korean EPS Vocabulary Mastering</title>
-
 <style>
 body {
-  margin: 0;
   font-family: Arial, sans-serif;
-  background: linear-gradient(to bottom, #000, #111);
-  color: white;
+  background: #111;
+  color: #fff;
   text-align: center;
+  margin: 0;
 }
 
-/* Header */
-h1 {
-  color: #00ffd5;
-  margin-top: 20px;
-}
-
-#categoryTitle {
-  margin: 10px 0 20px;
-  color: #ccc;
-}
-
-/* Top Controls */
-.controls {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 15px;
-  flex-wrap: wrap;
-  margin-bottom: 20px;
+.container {
+  max-width: 900px;
+  margin: auto;
+  padding: 20px;
 }
 
 button {
-  padding: 8px 18px;
-  border-radius: 25px;
+  padding: 12px 24px;
   border: none;
+  border-radius: 8px;
   cursor: pointer;
+  font-size: 18px;
+  margin: 8px;
 }
 
 .back-btn {
   background: #222;
-  color: white;
+  color: #fff;
 }
 
-.report-btn {
-  background: red;
-  color: white;
+.category-btn {
+  background: #2d2d2d;
+  color: #fff;
 }
 
-/* Card */
 .card {
-  width: 90%;
-  max-width: 500px;
-  margin: auto;
-  background: #1e1e1e;
+  margin-top: 40px;
+  background: #1f1f1f;
   border-radius: 20px;
-  padding: 60px 20px;
+  padding: 60px 30px;
   cursor: pointer;
-  transition: 0.3s;
-  box-shadow: 0 0 25px rgba(0,255,200,0.2);
+  position: relative;
 }
 
 .hangul {
@@ -71,101 +53,180 @@ button {
 }
 
 .meaning-inside {
-  margin-top: 25px;
-  font-size: 28px;
+  margin-top: 30px;
+  font-size: 32px;
   font-weight: bold;
-  color: #00ffd5;
-  background: black;
-  padding: 10px 20px;
-  border-radius: 12px;
+  color: #0ff;
+  background: #000;
+  padding: 12px 25px;
+  border-radius: 10px;
   display: inline-block;
 }
 
 .sub {
+  font-size: 24px;
   margin-top: 15px;
-  font-size: 20px;
-  font-weight: bold;
-}
-
-.next-btn {
-  margin-top: 30px;
-  padding: 10px 35px;
-  border-radius: 30px;
-  font-size: 16px;
 }
 
 .hidden {
   display: none;
 }
 
-/* Mobile */
-@media (max-width: 480px) {
-  .hangul {
-    font-size: 45px;
-  }
-  .meaning-inside {
-    font-size: 22px;
-  }
+#nextBtn {
+  display: block;
+  width: 60%;
+  max-width: 400px;
+  margin: 30px auto;
+  font-weight: bold;
+  font-size: 20px;
+  background: #fff;
+  color: #111;
+}
+
+label {
+  cursor: pointer;
 }
 </style>
 </head>
 
 <body>
-
+<div class="container">
 <h1>Korean EPS Vocabulary Mastering</h1>
-<h2 id="categoryTitle">Work</h2>
 
-<div class="controls">
-  <button class="back-btn">⬅️ Back to Mode</button>
-
-  <label>
-    <input type="checkbox" id="randomToggle">
-    Random Order
-  </label>
-
-  <button class="report-btn">⚠ Report</button>
+<!-- MODE MENU -->
+<div id="modeMenu">
+  <h2>Select Mode</h2>
+  <button class="menu-btn" onclick="setMode(1)">1️⃣ Hangul → Reveal</button>
+  <button class="menu-btn" onclick="setMode(2)">2️⃣ Hangul + Reveal Auto</button>
+  <button class="menu-btn" onclick="setMode(3)">3️⃣ Hangul + Meaning (No Romanization)</button>
 </div>
 
-<!-- Card -->
-<div class="card" onclick="revealMeaning()">
-  <div id="hangul" class="hangul"></div>
-  <div id="meaningInside" class="meaning-inside hidden"></div>
+<!-- CATEGORY MENU -->
+<div id="categoryMenu" class="hidden">
+  <h2>Select Category</h2>
+  <div id="categories"></div>
+  <div id="errorMsg" class="error"></div>
+  <button class="back-btn" onclick="backToMode()">⬅️ Back to Mode</button>
 </div>
 
-<!-- Romanization -->
-<div id="romanization" class="sub hidden"></div>
+<!-- FLASHCARD AREA -->
+<div id="flashcard" class="hidden">
 
-<!-- Next Button -->
-<button id="nextBtn" class="next-btn hidden" onclick="nextWord()">Next</button>
+  <h2 id="categoryTitle"></h2>
+
+  <!-- Back + Random Toggle -->
+  <div style="display:flex; justify-content:center; align-items:center; gap:12px; margin-bottom:15px;">
+    <button class="back-btn" onclick="backToMode()">⬅️ Back to Mode</button>
+    <label>
+      <input type="checkbox" id="randomToggle">
+      Random Order
+    </label>
+  </div>
+
+  <div class="card" onclick="revealMeaning()">
+    <div id="hangul" class="hangul"></div>
+    <div id="meaningInside" class="meaning-inside hidden"></div>
+  </div>
+
+  <div id="romanization" class="sub hidden"></div>
+
+  <button id="nextBtn" class="hidden" onclick="nextWord()">Next</button>
+
+</div>
+</div>
 
 <script>
-const vocab = [
-  { hangul: "일", romanization: "il", meaning: "work" },
-  { hangul: "회사", romanization: "hoesa", meaning: "company" },
-  { hangul: "직업", romanization: "jigeop", meaning: "job" },
-  { hangul: "월급", romanization: "wolgeup", meaning: "salary" }
-];
-
+let vocabData = {};
+let currentCategory = "";
 let currentIndex = 0;
+let mode = 1;
 let revealed = false;
 
-function loadWord() {
-  const word = vocab[currentIndex];
+// Fallback data
+vocabData = {
+  "Work": [
+    { "hangul": "일", "romanization": "il", "meaning": "work" },
+    { "hangul": "회사", "romanization": "hoesa", "meaning": "company" }
+  ]
+};
 
-  document.getElementById("hangul").textContent = word.hangul;
-  document.getElementById("meaningInside").textContent = word.meaning;
-  document.getElementById("romanization").textContent =
-    "(" + word.romanization + ")";
+// Load vocab JSON
+fetch('./vocab.json?timestamp=' + new Date().getTime())
+  .then(res => res.json())
+  .then(data => { vocabData = data; })
+  .catch(err => { console.log("Using fallback vocab", err); });
 
+// Select a mode
+function setMode(selectedMode){
+  mode = selectedMode;
+  document.getElementById('modeMenu').classList.add('hidden');
+  document.getElementById('categoryMenu').classList.remove('hidden');
+  loadCategories();
+}
+
+function backToMode(){
+  document.getElementById('flashcard').classList.add('hidden');
+  document.getElementById('categoryMenu').classList.add('hidden');
+  document.getElementById('modeMenu').classList.remove('hidden');
+}
+
+// Load Category Buttons
+function loadCategories(){
+  let catDiv = document.getElementById('categories');
+  let errorDiv = document.getElementById('errorMsg');
+  catDiv.innerHTML = "";
+  errorDiv.innerText = "";
+
+  if(Object.keys(vocabData).length === 0){
+    errorDiv.innerText = "No categories found. Check vocab.json file.";
+    return;
+  }
+
+  for(let category in vocabData){
+    let btn = document.createElement('button');
+    btn.className = 'category-btn';
+    btn.innerText = category;
+    btn.onclick = () => selectCategory(category);
+    catDiv.appendChild(btn);
+  }
+}
+
+function selectCategory(category){
+  currentCategory = category;
+  currentIndex = 0;
+  document.getElementById('categoryMenu').classList.add('hidden');
+  document.getElementById('flashcard').classList.remove('hidden');
+  document.getElementById('categoryTitle').innerText = category;
+  loadWord();
+}
+
+// Show Word
+function loadWord(){
+  const words = vocabData[currentCategory];
+  if(!words || words.length === 0) return;
+
+  const word = words[currentIndex];
+
+  document.getElementById("hangul").innerText = word.hangul;
+  document.getElementById("meaningInside").innerText = word.meaning;
+  document.getElementById("romanization").innerText = "(" + word.romanization + ")";
+
+  revealed = false;
+
+  // Hide everything first
   document.getElementById("meaningInside").classList.add("hidden");
   document.getElementById("romanization").classList.add("hidden");
   document.getElementById("nextBtn").classList.add("hidden");
 
-  revealed = false;
+  // If reveal auto mode
+  if(mode === 2){
+    setTimeout(revealMeaning, 300);
+  }
 }
 
-function revealMeaning() {
-  if (revealed) return;
+// Reveal
+function revealMeaning(){
+  if(revealed) return;
 
   document.getElementById("meaningInside").classList.remove("hidden");
   document.getElementById("romanization").classList.remove("hidden");
@@ -174,23 +235,39 @@ function revealMeaning() {
   revealed = true;
 }
 
-function nextWord() {
+// Next Word
+function nextWord(){
+  const words = vocabData[currentCategory];
   const randomMode = document.getElementById("randomToggle").checked;
 
-  if (randomMode) {
-    currentIndex = Math.floor(Math.random() * vocab.length);
+  if(randomMode){
+    let randIndex;
+    do {
+      randIndex = Math.floor(Math.random() * words.length);
+    } while(words.length > 1 && randIndex === currentIndex);
+    currentIndex = randIndex;
   } else {
     currentIndex++;
-    if (currentIndex >= vocab.length) {
-      currentIndex = 0;
-    }
+    if(currentIndex >= words.length) currentIndex = 0;
   }
 
   loadWord();
 }
 
-loadWord();
-</script>
+// Spacebar reveal
+document.addEventListener('keydown', function(e){
+  if(e.code === 'Space' && mode === 1){
+    e.preventDefault();
+    revealMeaning();
+  }
+});
 
+// Tap card reveal
+document.querySelector('.card').addEventListener('click', function(){
+  if(mode === 1){
+    revealMeaning();
+  }
+});
+</script>
 </body>
 </html>
