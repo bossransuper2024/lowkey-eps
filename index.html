@@ -42,6 +42,11 @@ button{
   color:white;
 }
 
+.report-btn{
+  background:red;
+  color:white;
+}
+
 .category-btn{
   display:block;
   width:100%;
@@ -53,6 +58,16 @@ button{
 
 .hidden{
   display:none;
+}
+
+/* TOP CONTROLS */
+.top-controls{
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  gap:15px;
+  flex-wrap:wrap;
+  margin-bottom:15px;
 }
 
 /* CARD */
@@ -112,15 +127,6 @@ button{
   font-size:20px;
 }
 
-.top-controls{
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  gap:15px;
-  flex-wrap:wrap;
-  margin-bottom:15px;
-}
-
 @media(max-width:600px){
   .card-front{
     font-size:42px;
@@ -159,14 +165,17 @@ button{
 
   <div class="top-controls">
     <button class="back-btn" onclick="backToMode()">⬅️ Back</button>
+
     <label>
       <input type="checkbox" id="randomToggle">
       Random Order
     </label>
+
+    <button class="report-btn" onclick="reportWord()">⚠ Report</button>
   </div>
 
   <div class="card" id="card" onclick="revealMeaning()">
-    <div class="card-inner" id="cardInner">
+    <div class="card-inner">
 
       <div class="card-front">
         <div id="hangul"></div>
@@ -305,6 +314,19 @@ function speakWord(){
   utter.lang="ko-KR";
   utter.rate=0.9;
   speechSynthesis.speak(utter);
+}
+
+/* REPORT */
+function reportWord(){
+  const words=vocabData[currentCategory];
+  const word=words[currentIndex];
+
+  alert(
+    "Reported:\n\n" +
+    "Hangul: " + word.hangul + "\n" +
+    "Romanization: " + word.romanization + "\n" +
+    "Meaning: " + word.meaning
+  );
 }
 
 /* SPACE REVEAL */
