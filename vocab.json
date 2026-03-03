@@ -61,6 +61,20 @@
     { "hangul": "ㅍ", "romanization": "p", "meaning": "Final consonant 'p' sound. Ex: 앞 [ap]" },
     { "hangul": "ㅎ", "romanization": "t/h", "meaning": "Final consonant 't' sound. Ex: 좋 [jot] (changes to 'ho' before vowel)" }
   ],
+	"Korean Double Batchim": [
+
+    { "hangul": "ㄳ", "romanization": "k/s → k", "meaning": "Double batchim: pronounce first ㄱ, second ㄳ only affects next vowel. Ex: 값 [gap] → [gap]" },
+    { "hangul": "ㄵ", "romanization": "n/j → n", "meaning": "Double batchim: pronounce ㄴ, second affects next vowel. Ex: 앉다 [anda] → [an-da]" },
+    { "hangul": "ㄶ", "romanization": "n/h → n", "meaning": "Double batchim: pronounce ㄴ, second affects next vowel. Ex: 앉히다 [an-hi-da]" },
+    { "hangul": "ㄺ", "romanization": "r/k → k", "meaning": "Double batchim: pronounce ㄱ. Ex: 읽다 [ik-da]" },
+    { "hangul": "ㄻ", "romanization": "r/m → m", "meaning": "Double batchim: pronounce ㅁ. Ex: 삶 [sam]" },
+    { "hangul": "ㄼ", "romanization": "r/p → p", "meaning": "Double batchim: pronounce ㅂ. Ex: 압력 [am-ryeok]" },
+    { "hangul": "ㄽ", "romanization": "r/s → t/s", "meaning": "Double batchim: pronounce ㄹ as t before vowel. Ex: 읊다 [eulp-da]" },
+    { "hangul": "ㄾ", "romanization": "r/t → t", "meaning": "Double batchim: pronounce ㄹ as t. Ex: 닿다 [dat-da]" },
+    { "hangul": "ㄿ", "romanization": "r/p → p", "meaning": "Double batchim: pronounce ㅍ. Ex: 읊다 [eulp-da]" },
+    { "hangul": "ㅀ", "romanization": "r/h → l", "meaning": "Double batchim: pronounce ㄹ. Ex: 앎 [alm]" },
+    { "hangul": "ㅄ", "romanization": "p/s → p", "meaning": "Double batchim: pronounce ㅂ. Ex: 없소 [eop-so]" }
+  ],
 
 	"Daily Activities": [
   { "hangul": "일하다", "romanization": "ilhada", "meaning": "to work" },
