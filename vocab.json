@@ -1,5 +1,5 @@
 {
-	"Korean Numbers - Sino": [
+	"Numbers - Sino": [
   { "hangul": "일", "romanization": "il", "meaning": "1" },
   { "hangul": "이", "romanization": "i", "meaning": "2" },
   { "hangul": "삼", "romanization": "sam", "meaning": "3" },
@@ -17,7 +17,7 @@
   { "hangul": "백만", "romanization": "baengman", "meaning": "1,000,000" },
   { "hangul": "천만", "romanization": "cheonman", "meaning": "10,000,000" }
 ],
-	"Korean Numbers - Native": [
+	"Numbers - Native": [
   { "hangul": "하나", "romanization": "hana", "meaning": "1" },
   { "hangul": "둘", "romanization": "dul", "meaning": "2" },
   { "hangul": "셋", "romanization": "set", "meaning": "3" },
@@ -45,7 +45,7 @@
   { "hangul": "백만", "romanization": "baengman", "meaning": "1,000,000 (pattern)" }
 ],
 	
-  "Korean Batchim": [
+  "Batchim": [
     { "hangul": "ㄱ", "romanization": "k/g", "meaning": "Final consonant 'g/k' sound. Ex: 국 [guk]" },
     { "hangul": "ㄴ", "romanization": "n", "meaning": "Final consonant 'n' sound. Ex: 산 [san]" },
     { "hangul": "ㄷ", "romanization": "t", "meaning": "Final consonant 't' sound. Ex: 꽃 [kkoch]" },
@@ -61,7 +61,7 @@
     { "hangul": "ㅍ", "romanization": "p", "meaning": "Final consonant 'p' sound. Ex: 앞 [ap]" },
     { "hangul": "ㅎ", "romanization": "t/h", "meaning": "Final consonant 't' sound. Ex: 좋 [jot] (changes to 'ho' before vowel)" }
   ],
-	"Korean Double Batchim": [
+	"Double Batchim": [
 
     { "hangul": "ㄳ", "romanization": "k/s → k", "meaning": "Double batchim: pronounce first ㄱ, second ㄳ only affects next vowel. Ex: 값 [gap] → [gap]" },
     { "hangul": "ㄵ", "romanization": "n/j → n", "meaning": "Double batchim: pronounce ㄴ, second affects next vowel. Ex: 앉다 [anda] → [an-da]" },
