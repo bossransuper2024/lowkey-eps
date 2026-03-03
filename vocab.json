@@ -60,8 +60,8 @@
     { "hangul": "ㅌ", "romanization": "t", "meaning": "Final consonant 't' sound. Ex: 끝 [kkeut]" },
     { "hangul": "ㅍ", "romanization": "p", "meaning": "Final consonant 'p' sound. Ex: 앞 [ap]" },
     { "hangul": "ㅎ", "romanization": "t/h", "meaning": "Final consonant 't' sound. Ex: 좋 [jot] (changes to 'ho' before vowel)" }
-  ]
-},
+  ],
+}
 	"Daily Activities": [
   { "hangul": "일하다", "romanization": "ilhada", "meaning": "to work" },
   { "hangul": "공부하다", "romanization": "gongbuhada", "meaning": "to study" },
