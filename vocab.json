@@ -462,8 +462,8 @@
     { "hangul": "8월", "romanization": "pal-wol", "meaning": "August" },
     { "hangul": "9월", "romanization": "gu-wol", "meaning": "September" },
     { "hangul": "10월", "romanization": "si-wol", "meaning": "October" },
-    { "hangul": "11월", "romanization": "sip-i-lwol", "meaning": "November" },
-    { "hangul": "12월", "romanization": "sib-i-wol", "meaning": "December" }
+    { "hangul": "11월", "romanization": "sip-il-wol", "meaning": "November" },
+    { "hangul": "12월", "romanization": "sip-i-wol", "meaning": "December" }
   ],
 
   "Health / Emergency": [
