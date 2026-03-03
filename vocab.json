@@ -1,4 +1,45 @@
 {
+	"Hangul - Consonants": [
+  { "hangul": "ㄱ", "romanization": "g/k", "meaning": "g or k sound" },
+  { "hangul": "ㄴ", "romanization": "n", "meaning": "n sound" },
+  { "hangul": "ㄷ", "romanization": "d/t", "meaning": "d or t sound" },
+  { "hangul": "ㄹ", "romanization": "r/l", "meaning": "r or l sound" },
+  { "hangul": "ㅁ", "romanization": "m", "meaning": "m sound" },
+  { "hangul": "ㅂ", "romanization": "b/p", "meaning": "b or p sound" },
+  { "hangul": "ㅅ", "romanization": "s", "meaning": "s sound" },
+  { "hangul": "ㅇ", "romanization": "silent/ng", "meaning": "silent at start, ng at bottom" },
+  { "hangul": "ㅈ", "romanization": "j", "meaning": "j sound" },
+  { "hangul": "ㅊ", "romanization": "ch", "meaning": "ch sound" },
+  { "hangul": "ㅋ", "romanization": "k", "meaning": "strong k sound" },
+  { "hangul": "ㅌ", "romanization": "t", "meaning": "strong t sound" },
+  { "hangul": "ㅍ", "romanization": "p", "meaning": "strong p sound" },
+  { "hangul": "ㅎ", "romanization": "h", "meaning": "h sound" }
+],
+
+"Hangul - Double Consonants": [
+  { "hangul": "ㄲ", "romanization": "kk", "meaning": "strong k sound" },
+  { "hangul": "ㄸ", "romanization": "tt", "meaning": "strong t sound" },
+  { "hangul": "ㅃ", "romanization": "pp", "meaning": "strong p sound" },
+  { "hangul": "ㅆ", "romanization": "ss", "meaning": "strong s sound" },
+  { "hangul": "ㅉ", "romanization": "jj", "meaning": "strong j sound" }
+],
+
+"Hangul - Vowels": [
+  { "hangul": "ㅏ", "romanization": "a", "meaning": "a as in father" },
+  { "hangul": "ㅓ", "romanization": "eo", "meaning": "eo sound (like uh)" },
+  { "hangul": "ㅗ", "romanization": "o", "meaning": "o sound" },
+  { "hangul": "ㅜ", "romanization": "u", "meaning": "u sound" },
+  { "hangul": "ㅡ", "romanization": "eu", "meaning": "eu sound (flat u)" },
+  { "hangul": "ㅣ", "romanization": "i", "meaning": "ee sound" },
+  { "hangul": "ㅐ", "romanization": "ae", "meaning": "ae sound" },
+  { "hangul": "ㅔ", "romanization": "e", "meaning": "e sound" },
+  { "hangul": "ㅑ", "romanization": "ya", "meaning": "ya sound" },
+  { "hangul": "ㅕ", "romanization": "yeo", "meaning": "yeo sound" },
+  { "hangul": "ㅛ", "romanization": "yo", "meaning": "yo sound" },
+  { "hangul": "ㅠ", "romanization": "yu", "meaning": "yu sound" },
+  { "hangul": "ㅒ", "romanization": "yae", "meaning": "yae sound" },
+  { "hangul": "ㅖ", "romanization": "ye", "meaning": "ye sound" }
+],
 	"Numbers - Sino": [
   { "hangul": "일", "romanization": "il", "meaning": "1" },
   { "hangul": "이", "romanization": "i", "meaning": "2" },
