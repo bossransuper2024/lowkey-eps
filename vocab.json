@@ -44,6 +44,24 @@
   { "hangul": "십만", "romanization": "sipman", "meaning": "100,000 (pattern)" },
   { "hangul": "백만", "romanization": "baengman", "meaning": "1,000,000 (pattern)" }
 ],
+	{
+  "Korean Batchim": [
+    { "hangul": "ㄱ", "romanization": "k/g", "meaning": "Final consonant 'g/k' sound. Ex: 국 [guk]" },
+    { "hangul": "ㄴ", "romanization": "n", "meaning": "Final consonant 'n' sound. Ex: 산 [san]" },
+    { "hangul": "ㄷ", "romanization": "t", "meaning": "Final consonant 't' sound. Ex: 꽃 [kkoch]" },
+    { "hangul": "ㄹ", "romanization": "l/r", "meaning": "Final consonant 'l' sound. Ex: 달 [dal]" },
+    { "hangul": "ㅁ", "romanization": "m", "meaning": "Final consonant 'm' sound. Ex: 집 [jip]" },
+    { "hangul": "ㅂ", "romanization": "p", "meaning": "Final consonant 'p' sound. Ex: 밥 [bap]" },
+    { "hangul": "ㅅ", "romanization": "t/s", "meaning": "Final consonant 't' sound. Ex: 옷 [ot] (changes to 'si' before vowel)" },
+    { "hangul": "ㅇ", "romanization": "ng", "meaning": "Final consonant 'ng' sound. Ex: 강 [gang]" },
+    { "hangul": "ㅈ", "romanization": "t/j", "meaning": "Final consonant 't' sound. Ex: 값 [gap] (changes to 'ja' before vowel)" },
+    { "hangul": "ㅊ", "romanization": "t/ch", "meaning": "Final consonant 't' sound. Ex: 꽃 [kkoch] (changes to 'chi' before vowel)" },
+    { "hangul": "ㅋ", "romanization": "k", "meaning": "Final consonant 'k' sound. Ex: 부엌 [bueok]" },
+    { "hangul": "ㅌ", "romanization": "t", "meaning": "Final consonant 't' sound. Ex: 끝 [kkeut]" },
+    { "hangul": "ㅍ", "romanization": "p", "meaning": "Final consonant 'p' sound. Ex: 앞 [ap]" },
+    { "hangul": "ㅎ", "romanization": "t/h", "meaning": "Final consonant 't' sound. Ex: 좋 [jot] (changes to 'ho' before vowel)" }
+  ]
+},
 	"Daily Activities": [
   { "hangul": "일하다", "romanization": "ilhada", "meaning": "to work" },
   { "hangul": "공부하다", "romanization": "gongbuhada", "meaning": "to study" },
