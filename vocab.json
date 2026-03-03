@@ -44,7 +44,7 @@
   { "hangul": "십만", "romanization": "sipman", "meaning": "100,000 (pattern)" },
   { "hangul": "백만", "romanization": "baengman", "meaning": "1,000,000 (pattern)" }
 ],
-	{
+	
   "Korean Batchim": [
     { "hangul": "ㄱ", "romanization": "k/g", "meaning": "Final consonant 'g/k' sound. Ex: 국 [guk]" },
     { "hangul": "ㄴ", "romanization": "n", "meaning": "Final consonant 'n' sound. Ex: 산 [san]" },
@@ -61,7 +61,7 @@
     { "hangul": "ㅍ", "romanization": "p", "meaning": "Final consonant 'p' sound. Ex: 앞 [ap]" },
     { "hangul": "ㅎ", "romanization": "t/h", "meaning": "Final consonant 't' sound. Ex: 좋 [jot] (changes to 'ho' before vowel)" }
   ],
-}
+
 	"Daily Activities": [
   { "hangul": "일하다", "romanization": "ilhada", "meaning": "to work" },
   { "hangul": "공부하다", "romanization": "gongbuhada", "meaning": "to study" },
