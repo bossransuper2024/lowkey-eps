@@ -194,6 +194,12 @@ function nextWord(){
 
     showWord();
 }
+  document.addEventListener("keydown", function(event) {
+    if (event.key === "ArrowRight") { // only right arrow
+        nextWord(); // call your existing next function
+    }
+});
+  
 
 // SPACEBAR REVEAL
 document.addEventListener('keydown', function(e){
