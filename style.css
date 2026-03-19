@@ -1,6 +1,28 @@
-.mode-3 .match-container {
-    max-width: 900px;
-    margin: auto;
+/* MATCH MODE LAYOUT */
+.mode-3 #hangul,
+.mode-3 #romanization {
+    display: inline-block;
+    vertical-align: top;
+    width: 48%;
+}
+
+.mode-3 .match-word {
+    width: 100%;              /* FULL WIDTH */
+    padding: 25px;            /* MAS MAKAPAL */
+    margin: 10px 0;
+    font-size: 26px !important;
+    border-radius: 15px;
+}
+
+/* HANGUL (SUPER LAKI) */
+.mode-3 #hangul .match-word {
+    font-size: 40px !important;
+    font-weight: bold;
+}
+
+/* MEANING */
+.mode-3 #romanization .match-word {
+    font-size: 24px !important;
 }
 
 /**************************************************/
