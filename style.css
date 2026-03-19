@@ -1,3 +1,4 @@
+/* ===== REPORT BUTTON ===== */
 .report-btn {
   background: linear-gradient(135deg, #ff4d4d, #ff1a1a);
   color: white;
@@ -88,118 +89,184 @@
   from { transform: scale(0.9); opacity: 0; }
   to { transform: scale(1); opacity: 1; }
 }
-/* ===== PREMIUM BACKGROUND ===== */
+
+/* ===== PREMIUM BACKGROUND & BODY ===== */
 body {
-    font-family: 'Segoe UI', sans-serif;
-    background: radial-gradient(circle at top, #1a1a1a, #000);
-    color: #fff;
-    text-align: center;
-    margin: 0;
+  font-family: 'Segoe UI', sans-serif;
+  background: radial-gradient(circle at top, #1a1a1a, #000);
+  color: #fff;
+  text-align: center;
+  margin: 0;
 }
 
 /* Container */
 .container {
-    max-width: 1000px;
-    margin: auto;
-    padding: 40px 20px;
+  max-width: 1000px;
+  width: 100%;
+  margin: auto;
+  padding: 40px 20px;
+  box-sizing: border-box;
 }
 
 /* ===== PREMIUM TITLE ===== */
 h1 {
-    font-size: 42px;
-    font-weight: 700;
-    background: linear-gradient(90deg, #00ffcc, #00aaff);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    margin-bottom: 20px;
+  font-size: 42px;
+  font-weight: 700;
+  background: linear-gradient(90deg, #00ffcc, #00aaff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-bottom: 20px;
 }
 
 h2 {
-    font-weight: 500;
-    color: #aaa;
-    margin-bottom: 25px;
+  font-weight: 500;
+  color: #aaa;
+  margin-bottom: 25px;
 }
 
 /* ===== CATEGORY GRID ===== */
 #categories {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 15px;
-    margin-bottom: 40px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 15px;
+  margin-bottom: 40px;
 }
 
 /* ===== PREMIUM BUTTON STYLE ===== */
 .category-btn {
-    padding: 14px 26px;
-    border-radius: 14px;
-    font-size: 15px;
-    border: 1px solid rgba(255,255,255,0.15);
-    background: rgba(255,255,255,0.05);
-    backdrop-filter: blur(10px);
-    color: #fff;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    min-width: 150px;
+  padding: 14px 26px;
+  border-radius: 14px;
+  font-size: 15px;
+  border: 1px solid rgba(255,255,255,0.15);
+  background: rgba(255,255,255,0.05);
+  backdrop-filter: blur(10px);
+  color: #fff;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  min-width: 150px;
+  word-wrap: break-word;
 }
 
 /* Hover Effect */
 .category-btn:hover {
-    transform: translateY(-5px) scale(1.05);
-    background: linear-gradient(90deg, #00ffcc, #00aaff);
-    color: #000;
-    box-shadow: 0 10px 25px rgba(0,255,200,0.4);
+  transform: translateY(-5px) scale(1.05);
+  background: linear-gradient(90deg, #00ffcc, #00aaff);
+  color: #000;
+  box-shadow: 0 10px 25px rgba(0,255,200,0.4);
 }
 
 /* ===== BACK BUTTON ===== */
 .back-btn {
-    padding: 12px 25px;
-    border-radius: 12px;
-    background: rgba(255,255,255,0.08);
-    border: 1px solid rgba(255,255,255,0.15);
-    color: #fff;
-    cursor: pointer;
-    transition: all 0.3s ease;
+  padding: 12px 25px;
+  border-radius: 12px;
+  background: rgba(255,255,255,0.08);
+  border: 1px solid rgba(255,255,255,0.15);
+  color: #fff;
+  cursor: pointer;
+  transition: all 0.3s ease;
 }
 
 .back-btn:hover {
-    background: #00ffcc;
-    color: #000;
-    transform: scale(1.05);
+  background: #00ffcc;
+  color: #000;
+  transform: scale(1.05);
 }
 
+/* ===== FLASHCARD ===== */
+#flashcard {
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* vertical center */
+  align-items: center;     /* horizontal center */
+  min-height: 70vh;        /* fill most of viewport */
+  padding: 20px;
+  box-sizing: border-box;
+}
 
-/* card border */
 .card { 
-    margin-top:50px; 
-    font-size:56px; 
-    font-weight:700; 
-    cursor:pointer; 
-    user-select:none;
+  margin-top:50px; 
+  font-size:56px; 
+  font-weight:700; 
+  cursor:pointer; 
+  user-select:none;
 
-    /* Premium Glass Effect */
-    padding:60px 80px;
-    border-radius:25px;
-    display:inline-block;
-    min-width:320px;
+  /* Premium Glass Effect */
+  padding:40px 60px;
+  border-radius:25px;
+  display:inline-block;
+  min-width:280px;
+  max-width:90%;
+  word-wrap: break-word;
 
-    background: rgba(255,255,255,0.05);
-    backdrop-filter: blur(15px);
-    -webkit-backdrop-filter: blur(15px);
+  background: rgba(255,255,255,0.05);
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
 
-    border: 1px solid rgba(255,255,255,0.2);
+  border: 1px solid rgba(255,255,255,0.2);
 
-    box-shadow:
-        0 10px 40px rgba(0,0,0,0.6),
-        0 0 30px rgba(0,255,200,0.15);
+  box-shadow:
+      0 10px 40px rgba(0,0,0,0.6),
+      0 0 30px rgba(0,255,200,0.15);
 
-    transition: all 0.3s ease;
+  transition: all 0.3s ease;
 }
 
 /* Hover animation */
 .card:hover {
-    transform: translateY(-8px) scale(1.03);
-    box-shadow:
-        0 20px 60px rgba(0,0,0,0.8),
-        0 0 40px rgba(0,255,200,0.3);
+  transform: translateY(-8px) scale(1.03);
+  box-shadow:
+      0 20px 60px rgba(0,0,0,0.8),
+      0 0 40px rgba(0,255,200,0.3);
+}
+
+/* ===== SUB TEXT ===== */
+.sub {
+  font-size:24px;
+  margin-top:20px;
+  color:#00ffcc;
+  word-wrap: break-word;
+}
+
+/* ===== TAP INFO ===== */
+#tapInfo {
+  cursor:pointer;
+  font-size:10px;
+  color:#0ff;
+  margin-top:15px;
+}
+
+/* ===== SCROLL ON SMALL HEIGHT ===== */
+@media (max-height: 500px) {
+  #flashcard {
+    justify-content: flex-start;
+    overflow-y: auto;
+  }
+}
+
+/* ===== RESPONSIVE FOR MOBILE ===== */
+@media (max-width: 600px) {
+  h1 { font-size:28px; }
+  h2 { font-size:18px; }
+
+  .card {
+    font-size:28px;
+    padding:20px 30px;
+    min-width:90%;
+    max-width:90%;
+  }
+  .sub { font-size:16px; margin-top:12px; }
+  #tapInfo { font-size:12px; }
+  button, .category-btn, .back-btn, .report-btn, #sendReportBtn {
+    font-size:14px;
+    padding:8px 14px;
+    min-width:120px;
+  }
+  .container { padding:20px 10px; }
+}
+
+/* ===== WRAP LONG TEXT ===== */
+.card, .sub {
+  word-wrap: break-word;
+  overflow-wrap: break-word;
 }
