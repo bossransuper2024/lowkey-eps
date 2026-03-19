@@ -235,15 +235,9 @@ document.getElementById('hangul').addEventListener('click', ()=>{
 });
 
 // ===== NEXT BUTTON =====
-function nextWord()
-{ 
+function nextWord() { 
     const words = vocabData[currentCategory];
-    if(!words || words.length===0) return; 
-    currentIndex++;
-    if(currentIndex>=words.length) currentIndex=0;
-    if(mode===1) showWord(); 
-    else if(mode===2) showQuizQuestion();
-    else if(mode===3) startMatch(); 
+    if(!words || words.length===0) return;
 
     if(randomToggle.checked){
         let randIndex;
@@ -255,8 +249,11 @@ function nextWord()
         currentIndex++;
         if(currentIndex >= words.length) currentIndex = 0;
     }
+
+    if(mode===1) showWord(); 
+    else if(mode===2) showQuizQuestion();
+    else if(mode===3) startMatch(); 
 }
-  
 
 // ===== MODE 2: QUIZ =====
 function startQuiz(){
