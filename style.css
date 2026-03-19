@@ -1,3 +1,11 @@
+@keyframes shake {
+  0% { transform: translate(0px,0px); }
+  20% { transform: translate(-5px,0px); }
+  40% { transform: translate(5px,0px); }
+  60% { transform: translate(-5px,0px); }
+  80% { transform: translate(5px,0px); }
+  100% { transform: translate(0px,0px); }
+}
 /* ===== REPORT BUTTON ===== */
 .report-btn {
   background: linear-gradient(135deg, #ff4d4d, #ff1a1a);
