@@ -49,7 +49,11 @@ button {
 .menu-btn { background:#1f1f1f; color:#fff; }
 .category-btn { background: rgba(255,255,255,0.05); backdrop-filter: blur(10px); color: #fff; min-width: 120px; }
 .back-btn { background: rgba(255,255,255,0.08); color:#fff; }
-.quiz-option, .match-word { background: rgba(255,255,255,0.05); color:#fff; min-width:150px; margin:5px; }
+.quiz-option, .match-word { 
+    background: rgba(255,255,255,0.05);
+    color:#fff;
+    width: 100%;              /* 🔥 FULL WIDTH */
+    display: block; 
 
 /* Hover effects */
 .category-btn:hover, .back-btn:hover, .menu-btn:hover, .quiz-option:hover, .match-word:hover {
