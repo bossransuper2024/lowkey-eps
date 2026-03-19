@@ -4,7 +4,22 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Korean EPS Vocabulary Mastering</title>
-<link rel="stylesheet" href="style.css">
+  
+<style>
+body { font-family: Arial, sans-serif; background:#111; color:#fff; text-align:center; }
+.container { max-width:800px; margin:auto; padding:20px; }
+button { padding:10px 20px; margin:5px; border:none; border-radius:8px; cursor:pointer; }
+.menu-btn { background:#1f1f1f; color:#fff; }
+.category-btn { background:#2d2d2d; color:#fff; }
+.card { margin-top:40px; font-size:48px; font-weight:bold; cursor:pointer; user-select:none; }
+.sub { font-size:24px; margin-top:20px; color:#00ffcc; }
+.hidden { display:none; }
+.error { color:#ff4d4d; margin-top:15px; }
+.back-btn { background:#333; color:#fff; }
+#tapInfo { cursor:pointer; font-size:10px; color:#0ff; margin-top:15px; }
+label { cursor:pointer; }
+</style>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
 <div class="container">
@@ -13,9 +28,9 @@
 <!-- MODE MENU -->
 <div id="modeMenu">
 <h2>Select Mode</h2>
-<button class="menu-btn" onclick="setMode(1)">1️⃣ Flashcard</button>
-<button class="menu-btn" onclick="setMode(2)">2️⃣ Quiz</button>
-<button class="menu-btn" onclick="setMode(3)">3️⃣ Matching</button>
+<button class="menu-btn" onclick="setMode(1)">1️⃣ Hangul → Reveal</button>
+<button class="menu-btn" onclick="setMode(2)">2️⃣ Hangul + Reveal Auto</button>
+<button class="menu-btn" onclick="setMode(3)">3️⃣ Hangul + Meaning (No Romanization)</button>
 </div>
 
 <!-- CATEGORY MENU -->
@@ -29,41 +44,270 @@
 <!-- FLASHCARD AREA -->
 <div id="flashcard" class="hidden">
 <h2 id="categoryTitle"></h2>
-<div style="display:flex; justify-content:center; gap:10px; flex-wrap:wrap; margin:10px 0;">
+  
+<div style="display:flex; justify-content:center; align-items:center; gap:10px; margin:10px 0;">
   <button class="back-btn" onclick="backToMode()">⬅️ Back to Mode</button>
-  <label style="cursor:pointer;">
+  <label style="margin:0; cursor:pointer;">
     <input type="checkbox" id="randomToggle" /> Random Order
   </label>
   <button class="report-btn" onclick="openReport()">⚠ Report</button>
 </div>
+
+
 <div class="card" id="hangul"></div>
 <div class="sub hidden" id="romanization"></div>
 <div class="sub hidden" id="meaning" style="font-size:32px; font-weight:bold;"></div>
 <div id="tapInfo" class="sub">Tap the word to reveal</div>
 <br>
 <button onclick="nextWord()">Next</button>
+
+
+</div>
 </div>
 
-<!-- MATCH / QUIZ AREA -->
-<div id="matchArea" class="hidden">
-<h2 id="matchTitle"></h2>
-<div id="matchContainer"></div>
-<button class="back-btn" onclick="backToMode()">⬅️ Back</button>
-</div>
+<script>
+let vocabData = {};
+let currentCategory = "";
+let currentIndex = 0;
+let mode = 1;
+const randomToggle = document.getElementById('randomToggle');
 
-<!-- REPORT MODAL -->
-<div id="reportModal" class="report-overlay hidden">
+// Fallback data
+vocabData = {
+  "Work": [
+    { "hangul": "일", "romanization": "il", "meaning": "work" },
+    { "hangul": "회사", "romanization": "hoesa", "meaning": "company" },
+    { "hangul": "직장", "romanization": "jikjang", "meaning": "workplace" },
+    { "hangul": "사장", "romanization": "sajang", "meaning": "boss" },
+    { "hangul": "직원", "romanization": "jigwon", "meaning": "employee" }
+  ],
+  "Food": [
+    { "hangul": "밥", "romanization": "bap", "meaning": "rice / meal" },
+    { "hangul": "물", "romanization": "mul", "meaning": "water" },
+    { "hangul": "김치", "romanization": "gimchi", "meaning": "kimchi" },
+    { "hangul": "국", "romanization": "guk", "meaning": "soup" }
+  ],
+  "Animals": [
+    { "hangul": "개", "romanization": "gae", "meaning": "dog" },
+    { "hangul": "고양이", "romanization": "goyangi", "meaning": "cat" },
+    { "hangul": "새", "romanization": "sae", "meaning": "bird" }
+  ]
+};
+
+// Load vocab.json if available
+fetch('./vocab.json?timestamp=' + new Date().getTime())
+  .then(res => res.json())
+  .then(data => { vocabData = data; console.log("Loaded vocab.json", vocabData); })
+  .catch(err => { console.log("Using fallback data", err); });
+
+function setMode(selectedMode){
+    mode = selectedMode;
+    document.getElementById('modeMenu').classList.add('hidden');
+    document.getElementById('categoryMenu').classList.remove('hidden');
+    loadCategories();
+}
+
+function backToMode(){
+    document.getElementById('flashcard').classList.add('hidden');
+    document.getElementById('categoryMenu').classList.add('hidden');
+    document.getElementById('modeMenu').classList.remove('hidden');
+}
+
+function loadCategories(){
+    let catDiv = document.getElementById('categories');
+    let errorDiv = document.getElementById('errorMsg');
+    catDiv.innerHTML = "";
+    errorDiv.innerText = "";
+
+    if(Object.keys(vocabData).length === 0){
+        errorDiv.innerText = "No categories found. Check vocab.json file.";
+        return;
+    }
+
+    for(let category in vocabData){
+        let btn = document.createElement('button');
+        btn.className = 'category-btn';
+        btn.innerText = category;
+        btn.onclick = () => selectCategory(category);
+        catDiv.appendChild(btn);
+    }
+}
+
+function selectCategory(category){
+    currentCategory = category;
+    currentIndex = 0;
+    document.getElementById('categoryMenu').classList.add('hidden');
+    document.getElementById('flashcard').classList.remove('hidden');
+    document.getElementById('categoryTitle').innerText = category;
+    showWord();
+}
+
+function showWord(){
+    const words = vocabData[currentCategory];
+    if(!words || words.length === 0) return;
+    const word = words[currentIndex];
+
+    document.getElementById('hangul').innerText = word.hangul;
+    document.getElementById('romanization').innerText = `(${word.romanization})`; // ✅ add parentheses
+    document.getElementById('meaning').innerText = word.meaning;
+
+    // Hide all first
+    document.getElementById('romanization').classList.add('hidden');
+    document.getElementById('meaning').classList.add('hidden');
+    document.getElementById('tapInfo').style.display = 'none';
+
+    // Mode behaviors
+    if(mode === 1){
+        document.getElementById('tapInfo').style.display = 'block';
+    }
+    else if(mode === 2){
+        reveal();
+    }
+    else if(mode === 3){
+        document.getElementById('meaning').classList.remove('hidden');
+        document.getElementById('romanization').classList.add('hidden');
+    }
+}
+
+function reveal(){
+    if(mode === 1 || mode === 2){
+        document.getElementById('romanization').classList.remove('hidden');
+        document.getElementById('meaning').classList.remove('hidden');
+        document.getElementById('tapInfo').style.display = 'none';
+    }
+}
+
+function nextWord(){
+    const words = vocabData[currentCategory];
+    if(!words || words.length === 0) return;
+
+    if(randomToggle.checked){
+        let randIndex;
+        do {
+            randIndex = Math.floor(Math.random() * words.length);
+        } while(words.length > 1 && randIndex === currentIndex);
+        currentIndex = randIndex;
+    } else {
+        currentIndex++;
+        if(currentIndex >= words.length) currentIndex = 0;
+    }
+
+    showWord();
+}
+  document.addEventListener("keydown", function(event) {
+    if (event.key === "ArrowRight") { // only right arrow
+        nextWord(); // call your existing next function
+    }
+});
+  
+
+// SPACEBAR REVEAL
+document.addEventListener('keydown', function(e){
+    if(e.code === 'Space' && mode === 1){
+        e.preventDefault();
+        reveal();
+    }
+});
+
+// TAP ON CARD TO REVEAL
+document.getElementById('hangul').addEventListener('click', function(){
+    if(mode === 1){
+        reveal();
+    }
+});
+</script>
+  <div id="reportModal" class="report-overlay hidden">
   <div class="report-box">
     <div class="report-header">
       <h3>Report Correction</h3>
       <span onclick="closeReport()" class="close-btn">✕</span>
     </div>
+
     <textarea id="reportText" placeholder="Describe the grammar issue or correction..."></textarea>
+
     <button id="sendReportBtn" onclick="sendReport()">Send Report</button>
+
     <div id="reportStatus" class="status-msg"></div>
   </div>
 </div>
+  <script>
+    
+const webhookURL = "https://discord.com/api/webhooks/1477337691950420160/vmF4-lTK1_wfxxyXlOCKgEk84HUc_kh2XkHdHpi0ENpRlgihGgVcGJeQsSx-5EnDkApd";
+let lastReportTime = 0;
+const cooldown = 30000; // 30 seconds
 
-<script src="app.js"></script>
+
+function openReport() {
+  document.getElementById("reportModal").classList.remove("hidden");
+}
+
+function closeReport() {
+  document.getElementById("reportModal").classList.add("hidden");
+  document.getElementById("reportText").value = "";
+  document.getElementById("reportStatus").innerText = "";
+}
+
+async function sendReport() {
+  const now = Date.now();
+
+  if (now - lastReportTime < cooldown) {
+    document.getElementById("reportStatus").innerText = "⏳ Please wait before sending again.";
+    return;
+  }
+
+  const feedback = document.getElementById("reportText").value.trim();
+  if (!feedback) {
+    document.getElementById("reportStatus").innerText = "⚠ Please enter feedback.";
+    return;
+  }
+
+  const word = document.getElementById("hangul")?.innerText || "N/A";
+  const roman = document.getElementById("romanization")?.innerText || "Hidden";
+  const meaning = document.getElementById("meaning")?.innerText || "Hidden";
+
+  const category = window.currentCategory || "Default";
+  const mode = window.currentMode || "Flashcard";
+
+  const payload = {
+    embeds: [{
+      title: "📘 Flashcard Report",
+      color: 15158332,
+      fields: [
+        { name: "Word", value: word, inline: true },
+        { name: "Romanization", value: roman, inline: true },
+        { name: "Meaning", value: meaning, inline: false },
+        { name: "Category", value: category, inline: true },
+        { name: "Mode", value: mode, inline: true },
+        { name: "Correction", value: feedback, inline: false }
+      ],
+      footer: {
+        text: "Time: " + new Date().toLocaleString()
+      }
+    }]
+  };
+
+  try {
+    const btn = document.getElementById("sendReportBtn");
+    btn.disabled = true;
+
+    await fetch(webhookURL, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(payload)
+    });
+
+    lastReportTime = now;
+
+    document.getElementById("reportStatus").innerText = "✅ Report sent successfully!";
+    setTimeout(closeReport, 1500);
+
+  } catch (error) {
+    document.getElementById("reportStatus").innerText = "❌ Failed to send report.";
+  } finally {
+    document.getElementById("sendReportBtn").disabled = false;
+  }
+}
+</script>
+  
 </body>
 </html>
