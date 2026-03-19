@@ -17,13 +17,12 @@
 
 /* HANGUL = MAS MALAKI PA */
 .mode-3 #hangul .match-word {
-    font-size: 34px;            /* 🔥 focus */
-    padding: 26px;
+    font-size: 38px !important;
 }
 
 /* MEANING = slightly smaller */
 .mode-3 #romanization .match-word {
-    font-size: 22px;
+    font-size: 26px !important;
 }
 
 /* HOVER EFFECT (optional pero ganda) */
