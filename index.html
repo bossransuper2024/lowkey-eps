@@ -302,25 +302,16 @@ function checkQuizAnswer(btn, selectedIdx){
 function startMatch(){
     const words = shuffleArray(vocabData[currentCategory]).slice(0,5);
     matchWords = words.map(w=>({hangul:w.hangul, meaning:w.meaning, matched:false}));
-
-    // Shuffle hangul and meaning separately
-    const hangulShuffled = shuffleArray(matchWords.map((w,i)=>({text:w.hangul, index:i})));
-    const meaningShuffled = shuffleArray(matchWords.map((w,i)=>({text:w.meaning, index:i})));
-
-    renderMatchWords(hangulShuffled, meaningShuffled);
+    matchSelections=[];
+    renderMatchWords();
 }
 
-function renderMatchWords(hangulShuffled, meaningShuffled){
+function renderMatchWords(){
     let hangulHTML='', meaningHTML='';
-    
-    hangulShuffled.forEach((w,i)=>{
-        hangulHTML+=`<button class="match-word" data-type="hangul" data-index="${w.index}" onclick="selectMatch(this)">${w.text}</button><br>`;
+    matchWords.forEach((w,i)=>{
+        hangulHTML+=`<button class="match-word" data-type="hangul" data-index="${i}" onclick="selectMatch(this)">${w.hangul}</button><br>`;
+        meaningHTML+=`<button class="match-word" data-type="meaning" data-index="${i}" onclick="selectMatch(this)">${w.meaning}</button><br>`;
     });
-    
-    meaningShuffled.forEach((w,i)=>{
-        meaningHTML+=`<button class="match-word" data-type="meaning" data-index="${w.index}" onclick="selectMatch(this)">${w.text}</button><br>`;
-    });
-    
     document.getElementById('hangul').innerHTML = hangulHTML;
     document.getElementById('romanization').innerHTML = meaningHTML;
     document.getElementById('romanization').classList.remove('hidden');
@@ -366,7 +357,6 @@ function revealMatchAnswers(){
         meaningBtn.style.background='linear-gradient(135deg,#4caf50,#2e7d32)';
     });
 }
-
 // ===== UTILITY =====
 function shuffleArray(array){
     let arr=[...array];
