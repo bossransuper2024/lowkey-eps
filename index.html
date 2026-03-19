@@ -47,20 +47,9 @@ button {
 }
 
 .menu-btn { background:#1f1f1f; color:#fff; }
-.category-btn { 
-    background: rgba(255,255,255,0.05);
-    backdrop-filter: blur(10px);
-    color: #fff; 
-    min-width: 120px; }
-    
-.back-btn { 
-    background: rgba(255,255,255,0.08);
-    color:#fff; }
-.quiz-option, .match-word { 
-    background: rgba(255,255,255,0.05);
-    color:#fff;
-    min-width:150px; 
-    margin:5px
+.category-btn { background: rgba(255,255,255,0.05); backdrop-filter: blur(10px); color: #fff; min-width: 120px; }
+.back-btn { background: rgba(255,255,255,0.08); color:#fff; }
+.quiz-option, .match-word { background: rgba(255,255,255,0.05); color:#fff; min-width:150px; margin:5px; }
 
 /* Hover effects */
 .category-btn:hover, .back-btn:hover, .menu-btn:hover, .quiz-option:hover, .match-word:hover {
@@ -226,7 +215,6 @@ function selectCategory(category){
 
 // ===== MODE 1: FLASHCARD =====
 function showWord(){
-  //  document.body.classList.remove("mode-3");
     const words = vocabData[currentCategory];
     if(!words || words.length===0) return;
     const word = words[currentIndex];
@@ -269,7 +257,6 @@ function nextWord() {
 
 // ===== MODE 2: QUIZ =====
 function startQuiz(){
-    //document.body.classList.remove("mode-3");
     const words = vocabData[currentCategory];
     let quizCount = Math.ceil(words.length/2);
     quizQuestions = shuffleArray(words).slice(0,quizCount);
@@ -327,7 +314,6 @@ function startMatch(){
     shuffledMeanings = shuffleArray([...matchWords]);
 
     matchSelections=[];
-   //  document.body.classList.add("mode-3");
     renderMatchWords();
 }
     
