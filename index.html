@@ -132,25 +132,41 @@ button {
 
 <script>
 // ===== VOCAB DATA =====
-let vocabData = {
-"Daily Activities":[
-{"hangul":"일하다","romanization":"ilhada","meaning":"to work"},
-{"hangul":"공부하다","romanization":"gongbuhada","meaning":"to study"},
-{"hangul":"운동하다","romanization":"undonghada","meaning":"to exercise"},
-{"hangul":"전화하다","romanization":"jeonhwahada","meaning":"to call (phone)"},
-{"hangul":"요리하다","romanization":"yorihada","meaning":"to cook"},
-{"hangul":"자다","romanization":"jada","meaning":"to sleep"},
-{"hangul":"먹다","romanization":"meokda","meaning":"to eat"}
-]
-};
-
-// ===== GLOBALS =====
+<script>
+let vocabData = {};
 let currentCategory = "";
 let currentIndex = 0;
 let mode = 1;
-let quizQuestions = [];
-let matchWords = [];
-let matchSelections = [];
+const randomToggle = document.getElementById('randomToggle');
+
+// Fallback data
+vocabData = {
+  "Work": [
+    { "hangul": "일", "romanization": "il", "meaning": "work" },
+    { "hangul": "회사", "romanization": "hoesa", "meaning": "company" },
+    { "hangul": "직장", "romanization": "jikjang", "meaning": "workplace" },
+    { "hangul": "사장", "romanization": "sajang", "meaning": "boss" },
+    { "hangul": "직원", "romanization": "jigwon", "meaning": "employee" }
+  ],
+  "Food": [
+    { "hangul": "밥", "romanization": "bap", "meaning": "rice / meal" },
+    { "hangul": "물", "romanization": "mul", "meaning": "water" },
+    { "hangul": "김치", "romanization": "gimchi", "meaning": "kimchi" },
+    { "hangul": "국", "romanization": "guk", "meaning": "soup" }
+  ],
+  "Animals": [
+    { "hangul": "개", "romanization": "gae", "meaning": "dog" },
+    { "hangul": "고양이", "romanization": "goyangi", "meaning": "cat" },
+    { "hangul": "새", "romanization": "sae", "meaning": "bird" }
+  ]
+};
+
+// Load vocab.json if available
+fetch('./vocab.json?timestamp=' + new Date().getTime())
+  .then(res => res.json())
+  .then(data => { vocabData = data; console.log("Loaded vocab.json", vocabData); })
+  .catch(err => { console.log("Using fallback data", err); });
+
 
 // ==== CATEGORY MENU =====
 function setMode(selectedMode){
