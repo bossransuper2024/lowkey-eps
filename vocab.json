@@ -917,7 +917,7 @@
   { "hangul": "영화관", "romanization": "yeonghwagwan", "meaning": "cinema" },
   { "hangul": "아침", "romanization": "achim", "meaning": "morning" },
   { "hangul": "하루", "romanization": "haru", "meaning": "whole day" },
-  { "hangul": "밤", "romanization": "bam", "meaning": "night" }
+  { "hangul": "밤", "romanization": "bam", "meaning": "night" },
   { "hangul": "새벽", "romanization": "saebyeok", "meaning": "dawn" },
   { "hangul": "주말", "romanization": "jumal", "meaning": "weekend" }
 ]
