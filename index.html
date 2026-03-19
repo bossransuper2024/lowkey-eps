@@ -226,7 +226,7 @@ function selectCategory(category){
 
 // ===== MODE 1: FLASHCARD =====
 function showWord(){
-    document.body.classList.remove("mode-3");
+  //  document.body.classList.remove("mode-3");
     const words = vocabData[currentCategory];
     if(!words || words.length===0) return;
     const word = words[currentIndex];
@@ -269,7 +269,7 @@ function nextWord() {
 
 // ===== MODE 2: QUIZ =====
 function startQuiz(){
-    document.body.classList.remove("mode-3");
+    //document.body.classList.remove("mode-3");
     const words = vocabData[currentCategory];
     let quizCount = Math.ceil(words.length/2);
     quizQuestions = shuffleArray(words).slice(0,quizCount);
@@ -327,7 +327,7 @@ function startMatch(){
     shuffledMeanings = shuffleArray([...matchWords]);
 
     matchSelections=[];
-     document.body.classList.add("mode-3");
+   //  document.body.classList.add("mode-3");
     renderMatchWords();
 }
     
