@@ -1,3 +1,7 @@
+.mode-3 .match-container {
+    max-width: 900px;
+    margin: auto;
+}
 .report-btn {
   background: linear-gradient(135deg, #ff4d4d, #ff1a1a);
   color: white;
