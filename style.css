@@ -2,34 +2,7 @@
     max-width: 900px;
     margin: auto;
 }
-/* MODE 3 MATCH UI IMPROVEMENT */
-.mode-3 .match-word {
-    width: 100%;
-    padding: 22px;              /* 👉 mas makapal button */
-    margin: 10px 0;
-    font-size: 26px;            /* 👉 mas malaking text */
-    font-weight: bold;
-    border-radius: 14px;
-    border: 2px solid rgba(255,255,255,0.1); /* 👉 visible border */
-    cursor: pointer;
-    transition: 0.2s;
-}
 
-/* HANGUL = MAS MALAKI PA */
-.mode-3 #hangul .match-word {
-    font-size: 138px !important;
-}
-
-/* MEANING = slightly smaller */
-.mode-3 #romanization .match-word {
-    font-size: 126px !important;
-}
-
-/* HOVER EFFECT (optional pero ganda) */
-.mode-3 .match-word:hover {
-    transform: scale(1.03);
-    border-color: #00ffcc;
-}
 /**************************************************/
 .report-btn {
   background: linear-gradient(135deg, #ff4d4d, #ff1a1a);
