@@ -226,32 +226,7 @@ document.getElementById('hangul').addEventListener('click', ()=>{
 });
 
 // ===== NEXT BUTTON =====
-function nextWord() {
-    const words = vocabData[currentCategory];
-    if (!words || words.length === 0) return;
-
-    if (randomToggle && randomToggle.checked) {
-        // Randomly select a different word
-        let randIndex;
-        do {
-            randIndex = Math.floor(Math.random() * words.length);
-        } while (words.length > 1 && randIndex === currentIndex);
-        currentIndex = randIndex;
-    } else {
-        // Normal sequential next
-        currentIndex++;
-        if (currentIndex >= words.length) currentIndex = 0;
-    }
-
-    // Show based on mode
-    if (mode === 1) {
-        showWord();
-    } else if (mode === 2) {
-        showQuizQuestion();
-    } else if (mode === 3) {
-        startMatch();
-    }
-}
+function nextWord(){ const words = vocabData[currentCategory]; if(!words || words.length===0) return; currentIndex++; if(currentIndex>=words.length) currentIndex=0; if(mode===1) showWord(); else if(mode===2) showQuizQuestion(); else if(mode===3) startMatch(); }
 
     document.addEventListener("keydown", function(event) {
     if (event.key === "ArrowRight") { // only right arrow
