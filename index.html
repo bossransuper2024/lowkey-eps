@@ -181,13 +181,20 @@ function loadCategories(){
 // ==== SELECT CATEGORY =====
 function selectCategory(category){
     currentCategory = category;
+    currentIndex = 0;
     document.getElementById('categoryMenu').classList.add('hidden');
     document.getElementById('flashcard').classList.remove('hidden');
     document.getElementById('categoryTitle').innerText = category;
-    currentIndex = 0;
-    if(mode===1) showWord();
-    else if(mode===2) startQuiz();
-    else if(mode===3) startMatch();
+
+    if(mode === 1){ // Flashcard
+        showWord();
+    }
+    else if(mode === 2){ // Quiz
+        startQuiz(); // you need to implement quiz logic similar to flashcard
+    }
+    else if(mode === 3){ // Matching
+        startMatch(); // our matching mode
+    }
 }
 
 // ===== MODE 1: FLASHCARD =====
