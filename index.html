@@ -243,6 +243,18 @@ function nextWord()
                     if(mode===1) showWord(); 
                     else if(mode===2) showQuizQuestion();
                     else if(mode===3) startMatch(); 
+
+    if(randomToggle.checked){
+        let randIndex;
+        do {
+            randIndex = Math.floor(Math.random() * words.length);
+        } while(words.length > 1 && randIndex === currentIndex);
+        currentIndex = randIndex;
+    } else {
+        currentIndex++;
+        if(currentIndex >= words.length) currentIndex = 0;
+    }
+    
   }
 
   
