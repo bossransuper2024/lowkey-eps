@@ -4,22 +4,98 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Korean EPS Vocabulary Mastering</title>
-  
 <style>
-body { font-family: Arial, sans-serif; background:#111; color:#fff; text-align:center; }
-.container { max-width:800px; margin:auto; padding:20px; }
-button { padding:10px 20px; margin:5px; border:none; border-radius:8px; cursor:pointer; }
+/* ===== GENERAL STYLES ===== */
+body {
+    font-family: 'Segoe UI', sans-serif;
+    background: radial-gradient(circle at top, #1a1a1a, #000);
+    color: #fff;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+}
+.container {
+    max-width: 1000px;
+    margin: auto;
+    padding: 20px;
+}
+
+/* ===== TITLES ===== */
+h1 {
+    font-size: 36px;
+    font-weight: 700;
+    background: linear-gradient(90deg, #00ffcc, #00aaff);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 20px;
+}
+h2 {
+    font-weight: 500;
+    color: #aaa;
+    margin-bottom: 20px;
+}
+
+/* ===== BUTTONS ===== */
+button {
+    cursor: pointer;
+    border: none;
+    border-radius: 12px;
+    padding: 10px 20px;
+    margin: 5px;
+    font-weight: 600;
+    transition: 0.3s;
+}
+
 .menu-btn { background:#1f1f1f; color:#fff; }
-.category-btn { background:#2d2d2d; color:#fff; }
-.card { margin-top:40px; font-size:48px; font-weight:bold; cursor:pointer; user-select:none; }
-.sub { font-size:24px; margin-top:20px; color:#00ffcc; }
+.category-btn { background: rgba(255,255,255,0.05); backdrop-filter: blur(10px); color: #fff; min-width: 120px; }
+.back-btn { background: rgba(255,255,255,0.08); color:#fff; }
+.quiz-option, .match-word { background: rgba(255,255,255,0.05); color:#fff; min-width:150px; margin:5px; }
+
+/* Hover effects */
+.category-btn:hover, .back-btn:hover, .menu-btn:hover, .quiz-option:hover, .match-word:hover {
+    transform: scale(1.05);
+    background: linear-gradient(90deg,#00ffcc,#00aaff);
+    color:#000;
+}
+
+/* ===== FLASHCARD ===== */
+.card { 
+    margin-top:20px; 
+    font-size:48px; 
+    font-weight:700; 
+    cursor:pointer; 
+    user-select:none;
+    padding:40px 60px;
+    border-radius:25px;
+    display:inline-block;
+    min-width:280px;
+    background: rgba(255,255,255,0.05);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255,255,255,0.2);
+    box-shadow:0 10px 30px rgba(0,0,0,0.6);
+}
+.sub { font-size:22px; margin-top:10px; color:#00ffcc; }
 .hidden { display:none; }
-.error { color:#ff4d4d; margin-top:15px; }
-.back-btn { background:#333; color:#fff; }
-#tapInfo { cursor:pointer; font-size:10px; color:#0ff; margin-top:15px; }
-label { cursor:pointer; }
+
+/* ===== REPORT MODAL ===== */
+.report-overlay {
+  position: fixed; inset:0; background: rgba(0,0,0,0.7);
+  display:flex; align-items:center; justify-content:center; z-index:9999;
+}
+.report-box {
+  background: #111; width: 90%; max-width: 400px; padding: 20px; border-radius: 18px; color: white;
+}
+.report-box textarea { width:100%; height:100px; margin:10px 0; border-radius:12px; border:none; padding:10px; resize:none; font-size:14px; }
+#sendReportBtn { width:100%; padding:10px; border-radius:12px; background: linear-gradient(135deg, #4caf50, #2e7d32); color:#fff; font-weight:bold; }
+.status-msg { margin-top:10px; font-size:13px; }
+
+/* ===== RESPONSIVE ===== */
+@media(max-width:600px){
+    .card { font-size:32px; padding:20px 30px; min-width:200px; }
+    .sub { font-size:18px; }
+    button { padding:8px 14px; font-size:14px; }
+}
 </style>
-  <link rel="stylesheet" href="style.css">
 </head>
 <body>
 <div class="container">
@@ -28,78 +104,55 @@ label { cursor:pointer; }
 <!-- MODE MENU -->
 <div id="modeMenu">
 <h2>Select Mode</h2>
-<button class="menu-btn" onclick="setMode(1)">1️⃣ Hangul → Reveal</button>
-<button class="menu-btn" onclick="setMode(2)">2️⃣ Hangul + Reveal Auto</button>
-<button class="menu-btn" onclick="setMode(3)">3️⃣ Hangul + Meaning (No Romanization)</button>
+<button class="menu-btn" onclick="setMode(1)">1️⃣ Flashcard</button>
+<button class="menu-btn" onclick="setMode(2)">2️⃣ Quiz</button>
+<button class="menu-btn" onclick="setMode(3)">3️⃣ Matching Words</button>
 </div>
 
 <!-- CATEGORY MENU -->
 <div id="categoryMenu" class="hidden">
 <h2>Select Category</h2>
 <div id="categories"></div>
-<div id="errorMsg" class="error"></div>
-<button class="back-btn" onclick="backToMode()">⬅️ Back to Mode</button>
+<button class="back-btn" onclick="backToMode()">⬅️ Back</button>
 </div>
 
-<!-- FLASHCARD AREA -->
+<!-- FLASHCARD / QUIZ / MATCH AREA -->
 <div id="flashcard" class="hidden">
 <h2 id="categoryTitle"></h2>
-  
-<div style="display:flex; justify-content:center; align-items:center; gap:10px; margin:10px 0;">
-  <button class="back-btn" onclick="backToMode()">⬅️ Back to Mode</button>
-  <label style="margin:0; cursor:pointer;">
-    <input type="checkbox" id="randomToggle" /> Random Order
-  </label>
-  <button class="report-btn" onclick="openReport()">⚠ Report</button>
-</div>
 
-
-<div class="card" id="hangul"></div>
-<div class="sub hidden" id="romanization"></div>
-<div class="sub hidden" id="meaning" style="font-size:32px; font-weight:bold;"></div>
+<div id="hangul" class="card"></div>
+<div id="romanization" class="sub hidden"></div>
+<div id="meaning" class="sub hidden"></div>
 <div id="tapInfo" class="sub">Tap the word to reveal</div>
 <br>
 <button onclick="nextWord()">Next</button>
-
-
 </div>
+
 </div>
 
 <script>
-let vocabData = {};
+// ===== VOCAB DATA =====
+let vocabData = {
+"Daily Activities":[
+{"hangul":"일하다","romanization":"ilhada","meaning":"to work"},
+{"hangul":"공부하다","romanization":"gongbuhada","meaning":"to study"},
+{"hangul":"운동하다","romanization":"undonghada","meaning":"to exercise"},
+{"hangul":"전화하다","romanization":"jeonhwahada","meaning":"to call (phone)"},
+{"hangul":"요리하다","romanization":"yorihada","meaning":"to cook"},
+{"hangul":"자다","romanization":"jada","meaning":"to sleep"},
+{"hangul":"먹다","romanization":"meokda","meaning":"to eat"}
+]
+};
+
+// ===== GLOBALS =====
 let currentCategory = "";
 let currentIndex = 0;
 let mode = 1;
-const randomToggle = document.getElementById('randomToggle');
+let quizQuestions = [];
+let matchWords = [];
+let matchSelections = [];
 
-// Fallback data
-vocabData = {
-  "Work": [
-    { "hangul": "일", "romanization": "il", "meaning": "work" },
-    { "hangul": "회사", "romanization": "hoesa", "meaning": "company" },
-    { "hangul": "직장", "romanization": "jikjang", "meaning": "workplace" },
-    { "hangul": "사장", "romanization": "sajang", "meaning": "boss" },
-    { "hangul": "직원", "romanization": "jigwon", "meaning": "employee" }
-  ],
-  "Food": [
-    { "hangul": "밥", "romanization": "bap", "meaning": "rice / meal" },
-    { "hangul": "물", "romanization": "mul", "meaning": "water" },
-    { "hangul": "김치", "romanization": "gimchi", "meaning": "kimchi" },
-    { "hangul": "국", "romanization": "guk", "meaning": "soup" }
-  ],
-  "Animals": [
-    { "hangul": "개", "romanization": "gae", "meaning": "dog" },
-    { "hangul": "고양이", "romanization": "goyangi", "meaning": "cat" },
-    { "hangul": "새", "romanization": "sae", "meaning": "bird" }
-  ]
-};
-
-// Load vocab.json if available
-fetch('./vocab.json?timestamp=' + new Date().getTime())
-  .then(res => res.json())
-  .then(data => { vocabData = data; console.log("Loaded vocab.json", vocabData); })
-  .catch(err => { console.log("Using fallback data", err); });
-
+// ==== CATEGORY MENU =====
 function setMode(selectedMode){
     mode = selectedMode;
     document.getElementById('modeMenu').classList.add('hidden');
@@ -115,199 +168,182 @@ function backToMode(){
 
 function loadCategories(){
     let catDiv = document.getElementById('categories');
-    let errorDiv = document.getElementById('errorMsg');
     catDiv.innerHTML = "";
-    errorDiv.innerText = "";
-
-    if(Object.keys(vocabData).length === 0){
-        errorDiv.innerText = "No categories found. Check vocab.json file.";
-        return;
-    }
-
-    for(let category in vocabData){
+    for(let cat in vocabData){
         let btn = document.createElement('button');
-        btn.className = 'category-btn';
-        btn.innerText = category;
-        btn.onclick = () => selectCategory(category);
+        btn.className='category-btn';
+        btn.innerText = cat;
+        btn.onclick = ()=>selectCategory(cat);
         catDiv.appendChild(btn);
     }
 }
 
+// ==== SELECT CATEGORY =====
 function selectCategory(category){
     currentCategory = category;
-    currentIndex = 0;
     document.getElementById('categoryMenu').classList.add('hidden');
     document.getElementById('flashcard').classList.remove('hidden');
     document.getElementById('categoryTitle').innerText = category;
-    showWord();
+    currentIndex = 0;
+    if(mode===1) showWord();
+    else if(mode===2) startQuiz();
+    else if(mode===3) startMatch();
 }
 
+// ===== MODE 1: FLASHCARD =====
 function showWord(){
     const words = vocabData[currentCategory];
-    if(!words || words.length === 0) return;
+    if(!words || words.length===0) return;
     const word = words[currentIndex];
-
     document.getElementById('hangul').innerText = word.hangul;
-    document.getElementById('romanization').innerText = `(${word.romanization})`; // ✅ add parentheses
+    document.getElementById('romanization').innerText = `(${word.romanization})`;
     document.getElementById('meaning').innerText = word.meaning;
-
-    // Hide all first
     document.getElementById('romanization').classList.add('hidden');
     document.getElementById('meaning').classList.add('hidden');
-    document.getElementById('tapInfo').style.display = 'none';
-
-    // Mode behaviors
-    if(mode === 1){
-        document.getElementById('tapInfo').style.display = 'block';
-    }
-    else if(mode === 2){
-        reveal();
-    }
-    else if(mode === 3){
-        document.getElementById('meaning').classList.remove('hidden');
-        document.getElementById('romanization').classList.add('hidden');
-    }
+    document.getElementById('tapInfo').style.display='block';
 }
 
-function reveal(){
-    if(mode === 1 || mode === 2){
+document.getElementById('hangul').addEventListener('click', ()=>{
+    if(mode===1){
         document.getElementById('romanization').classList.remove('hidden');
         document.getElementById('meaning').classList.remove('hidden');
-        document.getElementById('tapInfo').style.display = 'none';
+        document.getElementById('tapInfo').style.display='none';
     }
-}
+});
 
+// ===== NEXT BUTTON =====
 function nextWord(){
     const words = vocabData[currentCategory];
-    if(!words || words.length === 0) return;
+    if(!words || words.length===0) return;
+    currentIndex++;
+    if(currentIndex>=words.length) currentIndex=0;
 
-    if(randomToggle.checked){
-        let randIndex;
-        do {
-            randIndex = Math.floor(Math.random() * words.length);
-        } while(words.length > 1 && randIndex === currentIndex);
-        currentIndex = randIndex;
-    } else {
-        currentIndex++;
-        if(currentIndex >= words.length) currentIndex = 0;
-    }
-
-    showWord();
-}
-  document.addEventListener("keydown", function(event) {
-    if (event.key === "ArrowRight") { // only right arrow
-        nextWord(); // call your existing next function
-    }
-});
-  
-
-// SPACEBAR REVEAL
-document.addEventListener('keydown', function(e){
-    if(e.code === 'Space' && mode === 1){
-        e.preventDefault();
-        reveal();
-    }
-});
-
-// TAP ON CARD TO REVEAL
-document.getElementById('hangul').addEventListener('click', function(){
-    if(mode === 1){
-        reveal();
-    }
-});
-</script>
-  <div id="reportModal" class="report-overlay hidden">
-  <div class="report-box">
-    <div class="report-header">
-      <h3>Report Correction</h3>
-      <span onclick="closeReport()" class="close-btn">✕</span>
-    </div>
-
-    <textarea id="reportText" placeholder="Describe the grammar issue or correction..."></textarea>
-
-    <button id="sendReportBtn" onclick="sendReport()">Send Report</button>
-
-    <div id="reportStatus" class="status-msg"></div>
-  </div>
-</div>
-  <script>
-    
-const webhookURL = "https://discord.com/api/webhooks/1477337691950420160/vmF4-lTK1_wfxxyXlOCKgEk84HUc_kh2XkHdHpi0ENpRlgihGgVcGJeQsSx-5EnDkApd";
-let lastReportTime = 0;
-const cooldown = 30000; // 30 seconds
-
-
-function openReport() {
-  document.getElementById("reportModal").classList.remove("hidden");
+    if(mode===1) showWord();
+    else if(mode===2) showQuizQuestion();
+    else if(mode===3) startMatch();
 }
 
-function closeReport() {
-  document.getElementById("reportModal").classList.add("hidden");
-  document.getElementById("reportText").value = "";
-  document.getElementById("reportStatus").innerText = "";
+// ===== MODE 2: QUIZ =====
+function startQuiz(){
+    const words = vocabData[currentCategory];
+    let quizCount = Math.ceil(words.length/2);
+    quizQuestions = shuffleArray(words).slice(0,quizCount);
+    currentIndex = 0;
+    showQuizQuestion();
 }
 
-async function sendReport() {
-  const now = Date.now();
+function showQuizQuestion(){
+    const q = quizQuestions[currentIndex];
+    document.getElementById('hangul').innerText = q.hangul;
+    document.getElementById('romanization').className='sub';
+    document.getElementById('romanization').innerHTML='';
 
-  if (now - lastReportTime < cooldown) {
-    document.getElementById("reportStatus").innerText = "⏳ Please wait before sending again.";
-    return;
-  }
+    let options = [q];
+    const allWords = vocabData[currentCategory];
+    while(options.length<4){
+        let rand = allWords[Math.floor(Math.random()*allWords.length)];
+        if(!options.includes(rand)) options.push(rand);
+    }
+    options = shuffleArray(options);
 
-  const feedback = document.getElementById("reportText").value.trim();
-  if (!feedback) {
-    document.getElementById("reportStatus").innerText = "⚠ Please enter feedback.";
-    return;
-  }
-
-  const word = document.getElementById("hangul")?.innerText || "N/A";
-  const roman = document.getElementById("romanization")?.innerText || "Hidden";
-  const meaning = document.getElementById("meaning")?.innerText || "Hidden";
-
-  const category = window.currentCategory || "Default";
-  const mode = window.currentMode || "Flashcard";
-
-  const payload = {
-    embeds: [{
-      title: "📘 Flashcard Report",
-      color: 15158332,
-      fields: [
-        { name: "Word", value: word, inline: true },
-        { name: "Romanization", value: roman, inline: true },
-        { name: "Meaning", value: meaning, inline: false },
-        { name: "Category", value: category, inline: true },
-        { name: "Mode", value: mode, inline: true },
-        { name: "Correction", value: feedback, inline: false }
-      ],
-      footer: {
-        text: "Time: " + new Date().toLocaleString()
-      }
-    }]
-  };
-
-  try {
-    const btn = document.getElementById("sendReportBtn");
-    btn.disabled = true;
-
-    await fetch(webhookURL, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(payload)
+    let html='';
+    options.forEach((o,i)=>{
+        html+=`<button class="quiz-option" onclick="checkQuizAnswer(this,${i})">${i+1}. ${o.meaning}</button><br>`;
     });
+    document.getElementById('romanization').innerHTML = html;
+    q.correctIdx = options.findIndex(o=>o===q);
+}
 
-    lastReportTime = now;
+function checkQuizAnswer(btn, selectedIdx){
+    const correct = quizQuestions[currentIndex].correctIdx;
+    const options = document.querySelectorAll('.quiz-option');
+    options.forEach((b,i)=>{
+        if(i===correct) b.style.background='linear-gradient(135deg,#4caf50,#2e7d32)';
+        else b.style.background='linear-gradient(135deg,#ff4d4d,#ff1a1a)';
+        b.disabled=true;
+        b.style.color='#fff';
+    });
+}
 
-    document.getElementById("reportStatus").innerText = "✅ Report sent successfully!";
-    setTimeout(closeReport, 1500);
+// ===== MODE 3: MATCH =====
+// ===== MODE 3: MATCH =====
+function startMatch(){
+    const words = shuffleArray(vocabData[currentCategory]).slice(0,5);
+    matchWords = words.map(w=>({hangul:w.hangul, meaning:w.meaning, matched:false}));
 
-  } catch (error) {
-    document.getElementById("reportStatus").innerText = "❌ Failed to send report.";
-  } finally {
-    document.getElementById("sendReportBtn").disabled = false;
-  }
+    // Shuffle hangul and meaning separately
+    const hangulShuffled = shuffleArray(matchWords.map((w,i)=>({text:w.hangul, index:i})));
+    const meaningShuffled = shuffleArray(matchWords.map((w,i)=>({text:w.meaning, index:i})));
+
+    renderMatchWords(hangulShuffled, meaningShuffled);
+}
+
+function renderMatchWords(hangulShuffled, meaningShuffled){
+    let hangulHTML='', meaningHTML='';
+    
+    hangulShuffled.forEach((w,i)=>{
+        hangulHTML+=`<button class="match-word" data-type="hangul" data-index="${w.index}" onclick="selectMatch(this)">${w.text}</button><br>`;
+    });
+    
+    meaningShuffled.forEach((w,i)=>{
+        meaningHTML+=`<button class="match-word" data-type="meaning" data-index="${w.index}" onclick="selectMatch(this)">${w.text}</button><br>`;
+    });
+    
+    document.getElementById('hangul').innerHTML = hangulHTML;
+    document.getElementById('romanization').innerHTML = meaningHTML;
+    document.getElementById('romanization').classList.remove('hidden');
+}
+
+function selectMatch(btn){
+    const type = btn.dataset.type;
+    const idx = parseInt(btn.dataset.index);
+    if(matchSelections.length===0){
+        matchSelections.push({type,idx,btn});
+        btn.style.boxShadow='0 0 12px #00ffcc';
+    } else if(matchSelections.length===1){
+        const first = matchSelections[0];
+        if(first.type!==type){
+            const second={type,idx,btn};
+            if(first.idx===second.idx){
+                first.btn.style.background='linear-gradient(135deg,#4caf50,#2e7d32)';
+                second.btn.style.background='linear-gradient(135deg,#4caf50,#2e7d32)';
+                matchWords[idx].matched=true;
+            } else {
+                first.btn.style.background='linear-gradient(135deg,#ff4d4d,#ff1a1a)';
+                second.btn.style.background='linear-gradient(135deg,#ff4d4d,#ff1a1a)';
+                setTimeout(()=>{
+                    first.btn.style.boxShadow='';
+                    first.btn.style.background='';
+                    second.btn.style.background='';
+                },500);
+            }
+            matchSelections=[];
+        } else {
+            first.btn.style.boxShadow='';
+            matchSelections=[];
+        }
+        if(matchWords.every(w=>w.matched)) setTimeout(revealMatchAnswers,500);
+    }
+}
+
+function revealMatchAnswers(){
+    matchWords.forEach((w,i)=>{
+        const hangulBtn = document.querySelector(`.match-word[data-type="hangul"][data-index="${i}"]`);
+        const meaningBtn = document.querySelector(`.match-word[data-type="meaning"][data-index="${i}"]`);
+        hangulBtn.style.background='linear-gradient(135deg,#4caf50,#2e7d32)';
+        meaningBtn.style.background='linear-gradient(135deg,#4caf50,#2e7d32)';
+    });
+}
+
+// ===== UTILITY =====
+function shuffleArray(array){
+    let arr=[...array];
+    for(let i=arr.length-1;i>0;i--){
+        const j = Math.floor(Math.random()*(i+1));
+        [arr[i],arr[j]]=[arr[j],arr[i]];
+    }
+    return arr;
 }
 </script>
-  
 </body>
 </html>
