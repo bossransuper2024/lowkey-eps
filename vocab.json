@@ -847,7 +847,7 @@
   { "hangul": "근로자", "romanization": "geunroja", "meaning": "worker" },
   { "hangul": "경찰관", "romanization": "gyeongchalgwan", "meaning": "police officer" },
   { "hangul": "소방관", "romanization": "sobanggwan", "meaning": "firefighter" },
-  { "hangul": "공무원", "romanization": "gongmuwon", "meaning": "public official" },
+  { "hangul": "공무원", "romanization": "gongmuwon", "meaning": "public official" }/* ,
   { "hangul": "점원", "romanization": "jeomwon", "meaning": "clerk" },
   { "hangul": "의사", "romanization": "uisa", "meaning": "doctor" },
   { "hangul": "간호사", "romanization": "ganhosa", "meaning": "nurse" },
@@ -864,7 +864,7 @@
   { "hangul": "중국", "romanization": "jungguk", "meaning": "China" },
   { "hangul": "필리핀", "romanization": "pillipin", "meaning": "Philippines" },
   { "hangul": "일본", "romanization": "ilbon", "meaning": "Japan" },
-  { "hangul": "미국", "romanization": "miguk", "meaning": "America" }
+  { "hangul": "미국", "romanization": "miguk", "meaning": "America" } */
 ],
 	"Vocabulary #2": [
   { "hangul": "부모님", "romanization": "bumonim", "meaning": "parent(s)" },
