@@ -266,25 +266,63 @@ function startQuiz(){
 
 function showQuizQuestion(){
     const q = quizQuestions[currentIndex];
-    document.getElementById('hangul').innerText = q.hangul;
-    document.getElementById('romanization').className='sub';
-    document.getElementById('romanization').innerHTML='';
 
+    // Show hangul
+    document.getElementById('hangul').innerText = q.hangul;
+
+    // Prepare choices BUT HIDE
     let options = [q];
     const allWords = vocabData[currentCategory];
-    while(options.length<4){
+
+    while(options.length < 4){
         let rand = allWords[Math.floor(Math.random()*allWords.length)];
         if(!options.includes(rand)) options.push(rand);
     }
+
     options = shuffleArray(options);
 
-    let html='';
+    let html = `<div style="font-size:14px; color:#aaa; margin-bottom:10px;">(${q.romanization})</div>`;
+
     options.forEach((o,i)=>{
-        html+=`<button class="quiz-option" onclick="checkQuizAnswer(this,${i})">${i+1}. ${o.meaning}</button><br>`;
+        html += `<button class="quiz-option" onclick="checkQuizAnswer(this,${i})">
+                    ${i+1}. ${o.meaning}
+                 </button><br>`;
     });
-    document.getElementById('romanization').innerHTML = html;
+
+    // Save correct answer
     q.correctIdx = options.findIndex(o=>o===q);
+
+    const romanDiv = document.getElementById('romanization');
+    romanDiv.innerHTML = html;
+
+    // 🔴 HIDDEN FIRST (like your reference)
+    romanDiv.classList.add('hidden');
+
+    document.getElementById('tapInfo').style.display='block';
 }
+function revealQuiz(){
+    const romanDiv = document.getElementById('romanization');
+
+    if(romanDiv.classList.contains('hidden')){
+        romanDiv.classList.remove('hidden');
+        document.getElementById('tapInfo').style.display='none';
+    }
+}
+document.getElementById('hangul').addEventListener('click', ()=>{
+    if(mode === 2){
+        revealQuiz();
+    }
+});
+document.addEventListener('keydown', function(e){
+    if(e.code === 'Space'){
+        e.preventDefault();
+
+        if(mode === 2){
+            revealQuiz();
+        }
+    }
+});
+
 
 function checkQuizAnswer(btn, selectedIdx){
     const correct = quizQuestions[currentIndex].correctIdx;
