@@ -209,14 +209,6 @@ function showQuizQuestion(){
 
     document.getElementById('tapInfo').style.display='block';
 }
-function revealQuiz(){
-    const romanDiv = document.getElementById('romanization');
-
-    if(romanDiv.classList.contains('hidden')){
-        romanDiv.classList.remove('hidden');
-        document.getElementById('tapInfo').style.display='none';
-    }
-}
 
 
 function checkQuizAnswer(btn, selectedIdx){
