@@ -4,7 +4,98 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Korean EPS Vocabulary Mastering</title>
+<style>
+/* ===== GENERAL STYLES ===== */
+body {
+    font-family: 'Segoe UI', sans-serif;
+    background: radial-gradient(circle at top, #1a1a1a, #000);
+    color: #fff;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+}
+.container {
+    max-width: 1000px;
+    margin: auto;
+    padding: 20px;
+}
 
+/* ===== TITLES ===== */
+h1 {
+    font-size: 36px;
+    font-weight: 700;
+    background: linear-gradient(90deg, #00ffcc, #00aaff);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 20px;
+}
+h2 {
+    font-weight: 500;
+    color: #aaa;
+    margin-bottom: 20px;
+}
+
+/* ===== BUTTONS ===== */
+button {
+    cursor: pointer;
+    border: none;
+    border-radius: 12px;
+    padding: 10px 20px;
+    margin: 5px;
+    font-weight: 600;
+    transition: 0.3s;
+}
+
+.menu-btn { background:#1f1f1f; color:#fff; }
+.category-btn { background: rgba(255,255,255,0.05); backdrop-filter: blur(10px); color: #fff; min-width: 120px; }
+.back-btn { background: rgba(255,255,255,0.08); color:#fff; }
+.quiz-option, .match-word { background: rgba(255,255,255,0.05); color:#fff; min-width:150px; margin:5px; }
+
+/* Hover effects */
+.category-btn:hover, .back-btn:hover, .menu-btn:hover, .quiz-option:hover, .match-word:hover {
+    transform: scale(1.05);
+    background: linear-gradient(90deg,#00ffcc,#00aaff);
+    color:#000;
+}
+
+/* ===== FLASHCARD ===== */
+.card { 
+    margin-top:20px; 
+    font-size:48px; 
+    font-weight:700; 
+    cursor:pointer; 
+    user-select:none;
+    padding:40px 60px;
+    border-radius:25px;
+    display:inline-block;
+    min-width:280px;
+    background: rgba(255,255,255,0.05);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255,255,255,0.2);
+    box-shadow:0 10px 30px rgba(0,0,0,0.6);
+}
+.sub { font-size:22px; margin-top:10px; color:#00ffcc; }
+.hidden { display:none; }
+
+/* ===== REPORT MODAL ===== */
+.report-overlay {
+  position: fixed; inset:0; background: rgba(0,0,0,0.7);
+  display:flex; align-items:center; justify-content:center; z-index:9999;
+}
+.report-box {
+  background: #111; width: 90%; max-width: 400px; padding: 20px; border-radius: 18px; color: white;
+}
+.report-box textarea { width:100%; height:100px; margin:10px 0; border-radius:12px; border:none; padding:10px; resize:none; font-size:14px; }
+#sendReportBtn { width:100%; padding:10px; border-radius:12px; background: linear-gradient(135deg, #4caf50, #2e7d32); color:#fff; font-weight:bold; }
+.status-msg { margin-top:10px; font-size:13px; }
+
+/* ===== RESPONSIVE ===== */
+@media(max-width:600px){
+    .card { font-size:32px; padding:20px 30px; min-width:200px; }
+    .sub { font-size:18px; }
+    button { padding:8px 14px; font-size:14px; }
+}
+</style>
 </head>
 <body>
 <div class="container">
