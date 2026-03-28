@@ -217,20 +217,7 @@ function revealQuiz(){
         document.getElementById('tapInfo').style.display='none';
     }
 }
-document.getElementById('hangul').addEventListener('click', ()=>{
-    if(mode === 2){
-        revealQuiz();
-    }
-});
-document.addEventListener('keydown', function(e){
-    if(e.code === 'Space'){
-        e.preventDefault();
 
-        if(mode === 2){
-            revealQuiz();
-        }
-    }
-});
 
 function checkQuizAnswer(btn, selectedIdx){
     const correct = quizQuestions[currentIndex].correctIdx;
