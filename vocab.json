@@ -847,7 +847,24 @@
   { "hangul": "근로자", "romanization": "geunroja", "meaning": "worker" },
   { "hangul": "경찰관", "romanization": "gyeongchalgwan", "meaning": "police officer" },
   { "hangul": "소방관", "romanization": "sobanggwan", "meaning": "firefighter" },
-  { "hangul": "공무원", "romanization": "gongmuwon", "meaning": "public official" }
+  { "hangul": "공무원", "romanization": "gongmuwon", "meaning": "public official" },
+  { "hangul": "점원", "romanization": "jeomwon", "meaning": "clerk" },
+  { "hangul": "의사", "romanization": "uisa", "meaning": "doctor" },
+  { "hangul": "간호사", "romanization": "ganhosa", "meaning": "nurse" },
+  { "hangul": "요리사", "romanization": "yorisa", "meaning": "chef" },
+  { "hangul": "운전기사", "romanization": "unjeongisa", "meaning": "driver" },
+  { "hangul": "기술자", "romanization": "gisulja", "meaning": "technician" },
+  { "hangul": "목수", "romanization": "moksu", "meaning": "carpenter" },
+  { "hangul": "농부", "romanization": "nongbu", "meaning": "farmer" },
+  { "hangul": "어부", "romanization": "eobu", "meaning": "fisher" },
+  { "hangul": "나라", "romanization": "nara", "meaning": "country" },
+  { "hangul": "이름", "romanization": "ireum", "meaning": "name" },
+  { "hangul": "한국", "romanization": "hanguk", "meaning": "Korea" },
+  { "hangul": "태국", "romanization": "taeguk", "meaning": "Thailand" },
+  { "hangul": "중국", "romanization": "jungguk", "meaning": "China" },
+  { "hangul": "필리핀", "romanization": "pillipin", "meaning": "Philippines" },
+  { "hangul": "일본", "romanization": "ilbon", "meaning": "Japan" },
+  { "hangul": "미국", "romanization": "miguk", "meaning": "America" }
 ],
 	"Vocabulary #2": [
   { "hangul": "부모님", "romanization": "bumonim", "meaning": "parent(s)" },
@@ -903,5 +920,22 @@
   { "hangul": "밤", "romanization": "bam", "meaning": "night" },
   { "hangul": "새벽", "romanization": "saebyeok", "meaning": "dawn" },
   { "hangul": "주말", "romanization": "jumal", "meaning": "weekend" }
+],
+ "Location": [
+  { "hangul": "안", "romanization": "an", "meaning": "inside" },
+  { "hangul": "속", "romanization": "sok", "meaning": "inside (inner/deep inside)" },
+  { "hangul": "밖", "romanization": "bak", "meaning": "outside" },
+  { "hangul": "앞", "romanization": "ap", "meaning": "front" },
+  { "hangul": "뒤", "romanization": "dwi", "meaning": "back" },
+  { "hangul": "옆", "romanization": "yeop", "meaning": "side" },
+  { "hangul": "왼쪽", "romanization": "oenjjok", "meaning": "left side" },
+  { "hangul": "오른쪽", "romanization": "oreunjjok", "meaning": "right side" },
+  { "hangul": "가운데", "romanization": "gaunde", "meaning": "middle" },
+  { "hangul": "사이", "romanization": "sai", "meaning": "in between" },
+  { "hangul": "위", "romanization": "wi", "meaning": "top / above" },
+  { "hangul": "아래", "romanization": "arae", "meaning": "below / under" },
+  { "hangul": "밑", "romanization": "mit", "meaning": "below / under (lower part)" },
+  { "hangul": "건너편", "romanization": "geonneopyeon", "meaning": "across" },
+  { "hangul": "맞은편", "romanization": "majeunpyeon", "meaning": "opposite side" }
 ]
 }
