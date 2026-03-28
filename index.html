@@ -270,7 +270,8 @@ function showQuizQuestion(){
     // Show hangul
     document.getElementById('hangul').innerText = q.hangul;
 
-    // Prepare choices BUT HIDE
+    const romanDiv = document.getElementById('romanization');
+
     let options = [q];
     const allWords = vocabData[currentCategory];
 
@@ -281,7 +282,8 @@ function showQuizQuestion(){
 
     options = shuffleArray(options);
 
-    let html = `<div style="font-size:14px; color:#aaa; margin-bottom:10px;">(${q.romanization})</div>`;
+    // 🔥 DEFAULT VIEW: choices ONLY (NO romanization yet)
+    let html = '';
 
     options.forEach((o,i)=>{
         html += `<button class="quiz-option" onclick="checkQuizAnswer(this,${i})">
@@ -289,40 +291,43 @@ function showQuizQuestion(){
                  </button><br>`;
     });
 
+    romanDiv.innerHTML = html;
+
     // Save correct answer
     q.correctIdx = options.findIndex(o=>o===q);
 
-    const romanDiv = document.getElementById('romanization');
-    romanDiv.innerHTML = html;
+    // Store romanization for later reveal
+    romanDiv.dataset.roman = q.romanization;
 
-    // 🔴 HIDDEN FIRST (like your reference)
-    romanDiv.classList.add('hidden');
-
-    document.getElementById('tapInfo').style.display='block';
+    document.getElementById('tapInfo').style.display = 'block';
 }
 function revealQuiz(){
     const romanDiv = document.getElementById('romanization');
 
-    if(romanDiv.classList.contains('hidden')){
-        romanDiv.classList.remove('hidden');
-        document.getElementById('tapInfo').style.display='none';
+    // Prevent duplicate insert
+    if(!romanDiv.dataset.revealed){
+        const roman = romanDiv.dataset.roman;
+
+        // Insert romanization ABOVE choices
+        romanDiv.innerHTML =
+            `<div style="font-size:14px; color:#aaa; margin-bottom:10px;">(${roman})</div>`
+            + romanDiv.innerHTML;
+
+        romanDiv.dataset.revealed = "true";
+
+        document.getElementById('tapInfo').style.display = 'none';
     }
 }
 document.getElementById('hangul').addEventListener('click', ()=>{
-    if(mode === 2){
-        revealQuiz();
-    }
+    if(mode === 2) revealQuiz();
 });
+
 document.addEventListener('keydown', function(e){
     if(e.code === 'Space'){
         e.preventDefault();
-
-        if(mode === 2){
-            revealQuiz();
-        }
+        if(mode === 2) revealQuiz();
     }
 });
-
 
 function checkQuizAnswer(btn, selectedIdx){
     const correct = quizQuestions[currentIndex].correctIdx;
