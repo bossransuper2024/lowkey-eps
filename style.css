@@ -1,12 +1,3 @@
-#romanization {
-  text-align: center;
-}
-
-.quiz-option {
-  display: block;
-  margin: 8px auto;
-  width: 220px;
-}
 /* ===== GENERAL STYLES ===== */
 body {
     font-family: 'Segoe UI', sans-serif;
