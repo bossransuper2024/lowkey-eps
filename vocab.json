@@ -1006,21 +1006,21 @@
   { "hangul": "축구장", "romanization": "chukgujang", "meaning": "soccer field" }
 ],
   "Connectors (Grammar) ": [
-  { "hangul": "–고", "romanization": "go", "meaning": "and" },
+  { "hangul": "고", "romanization": "go", "meaning": "and" },
   { "hangul": "그리고", "romanization": "geurigo", "meaning": "then" },
-  { "hangul": "–아서/어서", "romanization": "aseo/eoseo", "meaning": "because" },
-  { "hangul": "–니까", "romanization": "nikka", "meaning": "because (strong)" },
+  { "hangul": "아서/어서", "romanization": "aseo/eoseo", "meaning": "because" },
+  { "hangul": "니까", "romanization": "nikka", "meaning": "because (strong)" },
   { "hangul": "그래서", "romanization": "geuraeseo", "meaning": "so / therefore" },
-  { "hangul": "–지만", "romanization": "jiman", "meaning": "but" },
-  { "hangul": "–면", "romanization": "myeon", "meaning": "if" },
-  { "hangul": "–면서", "romanization": "myeonseo", "meaning": "while" },
-  { "hangul": "–아도/어도", "romanization": "ado/eodo", "meaning": "even if" },
-  { "hangul": "–려고", "romanization": "ryeogo", "meaning": "in order to" },
-  { "hangul": "–고 나서", "romanization": "go naseo", "meaning": "after" },
-  { "hangul": "–은/ㄴ 후에", "romanization": "eun/n hue", "meaning": "after (formal)" },
-  { "hangul": "–고 나면", "romanization": "go namyeon", "meaning": "after (once done)" },
-  { "hangul": "–기 전에", "romanization": "gi jeone", "meaning": "before" },
-  { "hangul": "–기 전", "romanization": "gi jeon", "meaning": "before (short)" },
-  { "hangul": "–기 전까지", "romanization": "gi jeonkkaji", "meaning": "until before" }
+  { "hangul": "지만", "romanization": "jiman", "meaning": "but" },
+  { "hangul": "면", "romanization": "myeon", "meaning": "if" },
+  { "hangul": "면서", "romanization": "myeonseo", "meaning": "while" },
+  { "hangul": "아도/어도", "romanization": "ado/eodo", "meaning": "even if" },
+  { "hangul": "려고", "romanization": "ryeogo", "meaning": "in order to" },
+  { "hangul": "고 나서", "romanization": "go naseo", "meaning": "after" },
+  { "hangul": "은/ㄴ 후에", "romanization": "eun/n hue", "meaning": "after (formal)" },
+  { "hangul": "고 나면", "romanization": "go namyeon", "meaning": "after (once done)" },
+  { "hangul": "기 전에", "romanization": "gi jeone", "meaning": "before" },
+  { "hangul": "기 전", "romanization": "gi jeon", "meaning": "before (short)" },
+  { "hangul": "기 전까지", "romanization": "gi jeonkkaji", "meaning": "until before" }
 ]
 }
